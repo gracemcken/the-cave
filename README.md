@@ -1,31 +1,123 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+![Last commit](https://img.shields.io/github/last-commit/gracemcken/the-cave) 
+![Languages used](https://img.shields.io/github/languages/count/gracemcken/the-cave)
+![Top Language used](https://img.shields.io/github/languages/top/gracemcken/the-cave)
 
-Welcome USER_NAME,
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+# Table of Contents
 
-## Reminders
+- [Table of Contents](#table-of-contents)
+- [Site Overview](#site-overview)
+  - [Goal](#goal)
+  - [Technologies used](#technologies-used)
+- [UX](#ux)
+  - [Target Audience](#target-audience)
+  - [User Stories](#user-stories)
+- [Features](#features)
+  - [Existing Features](#existing-features)
+  - [Future Features](#future-features)
+- [Design](#design)
+- [Testing](#testing)
+  - [Bugs](#bugs)
+  - [Known Issues](#known-issues)
+- [Deployment](#deployment)
+  - [How to Fork](#how-to-fork)
+- [Credits](#credits)
+  - [Code](#code)
+    - [Version Control](#version-control)
+- [Acknowledgments](#acknowledgments)
+   
+  - [Future Features](#future-features)
+- [Table of Contents](#table-of-contents)
+- [Site Overview](#site-overview)
+  - [Goal](#goal)
+  - [Technologies used](#technologies-used)
+- [UX](#ux)
+  - [Target Audience](#target-audience)
+  - [User Stories](#user-stories)
+- [Features](#features)
+  - [Existing Features](#existing-features)
+  - [Future Features](#future-features)
+- [Design](#design)
+- [Testing](#testing)
+  - [Bugs](#bugs)
+  - [Known Issues](#known-issues)
+- [Deployment](#deployment)
+  - [How to Fork](#how-to-fork)
+- [Credits](#credits)
+  - [Code](#code)
+    - [Version Control](#version-control)
+- [Acknowledgments](#acknowledgments)
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
 
-## Creating the Heroku app
+# Site Overview
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Goal
 
-1. `heroku/python`
-2. `heroku/nodejs`
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+<hr>
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+## Technologies used
 
-Connect your GitHub repository and deploy as normal.
+- [HTML5](https://en.wikipedia.org/wiki/HTML5) for the contents and structure of the website.
+- [CSS3](https://en.wikipedia.org/wiki/CSS) for the styling and animations.
+- [GitHub](https://github.com/) as a remote repository.
+- [Heroku](https://heroku.com) to deploy the website.
+- [Visual Studio Code](https://code.visualstudio.com/) as a local IDE & repository.
 
-## Constraints
+# UX
+## Target Audience
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
 
------
-Happy coding!
+## User Stories
+
+- As a user:
+
+# Features
+
+## Existing Features
+
+
+
+## Future Features
+
+
+# Design
+
+
+<hr>
+
+# Testing
+Testing document can be found [here](TESTING.md)
+## Bugs
+
+Bug | Status 
+----|-------
+
+## Known Issues
+
+
+
+# Deployment 
+
+
+## How to Fork
+1. Login/signup to [GitHub](https://github.com/).
+2. Locate the relevant repository - in this case [gracemcken/the-cave](https://github.com/gracemcken/the-cave)
+3. Click on the 'Fork' button in the upper left.
+4. Your forked version of this repo will be generated!
+# Credits
+## Code
+- fprint and some game logic ideas were sourced from [Elijah Henderson](https://github.com/elijah-henderson) and his youtube tutorials.
+
+
+<hr>
+
+### Version Control
+*   Git was used as the version control software. Commands such as git add ., git status, git commit and git push were used to add, save, stage and push the code to the GitHub repository where the source code is stored.
+
+
+
+# Acknowledgments
+
+
+
