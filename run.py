@@ -51,9 +51,9 @@ def get_race():
     fprint("Dwarf: Solid and stout, dwarves are as stubborn as they are strong.\n", 1)
     while True:
         race = input("My race is: ")
-        races = ["Human", "Dwarf", "Elf"]
+        races = ["Human", "human", "Dwarf", "dwarf", "Elf", "elf"]
         if race in races:
-            print(f"Nice to meet you, {race}. You are the first {race} seen here in a long time.")
+            print(f"Nice to meet you, {race}. You are the first {race} to be seen here in a long, long time.")
             break
         else:
             print("Please type one of the races listed and ensure there is a capital letter.")
@@ -68,14 +68,100 @@ def add_race():
     worksheet_to_update.update_cell(2,2, race)
     
 
+def get_class():
+    """
+    Player chooses their class, each different option add different statistics to the player's core scores
+    """
+    fprint("You seem fairly capable of handling yourself. In which area do your expertise lie?\n", 1)
+    fprint("Warrior: Strong and formidable, well versed in the art of melee combat.", 1)
+    fprint("Ranger: A hunter, their work depends of their stealth and instincts", 1)
+    fprint("Mage: Intelligent and shrewd, as long as they have something to channel it, they can control magic.\n", 1)
+    while True:
+        player_class = input("My class is: ")
+        player_classes = ["warrior", "ranger", "mage", "Warrior", "Ranger", "Mage"]
+        if player_class in player_classes:
+            print(f"Ah, a {player_class}.")
+            break
+        else:
+            print("Please type one of the classes listed.")
+            continue
+    return player_class
+
+def add_player_class():
+    """
+    Adds player class to character worksheet
+    """
+    worksheet_to_update = SHEET.worksheet('character')
+    worksheet_to_update.update_cell(2,3, player_class)
+
+
+def preferred_weapon(player_class):
+    """
+    Player chooses their preferred weapon, each class has different options.
+    """
+    fprint("I'm sure you're strong in a fight, but if you had to choose, which weapon would be your preference?\n", 1)
+    if player_class == "warrior" or player_class == "Warrior":
+        fprint("Sword")
+        fprint("or")
+        fprint("Axe")
+        while True:
+            weapon = input(" ")
+            weapons = ["sword", "Sword", "axe", "Axe"]
+            if weapon in weapons:
+                print(f"The mighty {weapon}, of course... of course.")
+                break
+            else:
+                print("Please type one of the weapons listed.")
+                continue
+    elif player_class == "ranger" or player_class =="Ranger":
+        fprint("Dagger")
+        fprint("or")
+        fprint("Bow")
+        while True:
+            weapon = input(" ")
+            weapons = ["dagger", "Dagger", "bow", "Bow"]
+            if weapon in weapons:
+                print(f"The elegant {weapon}, of course... of course.")
+                break
+            else:
+                print("Please type one of the weapons listed.")
+                continue
+    else:
+        fprint("Staff")
+        fprint("or")
+        fprint("Spell Tome")
+        while True:
+            weapon = input(" ")
+            weapons = ["staff", "Staff", "spell tome", "Spell Tome"]
+            if weapon in weapons:
+                print(f"The mystical {weapon}, of course... of course.")
+                break
+            else:
+                print("Please type one of the weapons listed.")
+                continue
+    return weapon
+
+
+def add_preferred_weapon():
+    """
+    Adds player weapon to character worksheet
+    """
+    worksheet_to_update = SHEET.worksheet('character')
+    worksheet_to_update.update_cell(2,4, weapon)
+
+
 
 
 
 
 name = get_name()
 race = get_race()
+player_class = get_class()
+weapon = preferred_weapon(player_class)
 add_name()
 add_race()
+add_player_class()
+add_preferred_weapon()
 
 
 
