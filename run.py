@@ -12,6 +12,24 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("the_cave")
 
+def default_player_stats():
+    """
+    Places default player stats into google sheet before any modifications can be made or buffs.
+    """
+    worksheet_to_update = SHEET.worksheet('character')
+    # character's default health points
+    worksheet_to_update.update_cell(2,5, int(100)) 
+    # character's default luck
+    worksheet_to_update.update_cell(2,6, int(10))
+    # character's default dexterity
+    worksheet_to_update.update_cell(2,7, int(10))
+    # character's default strength
+    worksheet_to_update.update_cell(2,8, int(10))
+    # character's default attack
+    worksheet_to_update.update_cell(2,9, int(10))
+    # character's default defense
+    worksheet_to_update.update_cell(2,10, int(20))
+
 
 def fprint(str, delay=0):
     """
@@ -131,7 +149,7 @@ def preferred_weapon(player_class):
         fprint("or")
         fprint("Spell Tome")
         while True:
-            weapon = input(" ")
+            weapon = input("")
             weapons = ["staff", "Staff", "spell tome", "Spell Tome"]
             if weapon in weapons:
                 print(f"The mystical {weapon}, of course... of course.")
@@ -153,7 +171,7 @@ def add_preferred_weapon():
 
 
 
-
+default_player_stats()
 name = get_name()
 race = get_race()
 player_class = get_class()
