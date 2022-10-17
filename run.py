@@ -167,6 +167,31 @@ def add_preferred_weapon():
     worksheet_to_update = SHEET.worksheet('character')
     worksheet_to_update.update_cell(2,4, weapon)
 
+def add_race_modifiers(race):
+    """
+    Adds onto player's core stats depending on their race.
+    Human gets +5 to dexterity and strength.
+    Dwarf gets + 10 to strength.
+    Elf gets + 10 to dexterity
+    """
+    if race == "Human" or race == "human":
+        worksheet_to_update = SHEET.worksheet('character')
+        worksheet_to_update.update_cell(2,7, int(15))
+        worksheet_to_update.update_cell(2,8, int(15))
+    elif race == "Dwarf" or race == "dwarf":
+        worksheet_to_update = SHEET.worksheet('character')
+        worksheet_to_update.update_cell(2,8, int(20))
+    else:
+        worksheet_to_update = SHEET.worksheet('character')
+        worksheet_to_update.update_cell(2,7, int(20))
+
+
+
+
+
+
+
+
 
 
 
@@ -180,6 +205,6 @@ add_name()
 add_race()
 add_player_class()
 add_preferred_weapon()
-
+add_race_modifiers(race)
 
 
