@@ -214,15 +214,6 @@ def add_class_modifiers(player_class):
 
 
 
-
-
-
-
-
-
-
-
-
 default_player_stats()
 name = get_name()
 race = get_race()

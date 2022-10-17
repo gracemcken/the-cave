@@ -50,6 +50,7 @@
 
 
 # Site Overview
+The Cave is a text adventure RPG game where the player choses their race, class and preferred weapon. These initial decisions impact the player's stats in-game and whether or not they will be able to escape the cave! 
 
 ## Goal
 
