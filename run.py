@@ -123,7 +123,7 @@ def preferred_weapon(player_class):
         fprint("or")
         fprint("Axe")
         while True:
-            weapon = input(" ")
+            weapon = input("")
             weapons = ["sword", "Sword", "axe", "Axe"]
             if weapon in weapons:
                 print(f"The mighty {weapon}, of course... of course.")
@@ -136,7 +136,7 @@ def preferred_weapon(player_class):
         fprint("or")
         fprint("Bow")
         while True:
-            weapon = input(" ")
+            weapon = input("")
             weapons = ["dagger", "Dagger", "bow", "Bow"]
             if weapon in weapons:
                 print(f"The elegant {weapon}, of course... of course.")
@@ -185,6 +185,33 @@ def add_race_modifiers(race):
         worksheet_to_update = SHEET.worksheet('character')
         worksheet_to_update.update_cell(2,7, int(20))
 
+def add_class_modifiers(player_class):
+    """
+    Adds onto player's core stats depending on their class.
+    Warrior gets +10 strength.
+    Ranger gets + 10 to dexterity.
+    Mage gets +10 to luck.
+    """
+    if player_class == "warrior" or player_class == "Warrior":
+        worksheet_to_update = SHEET.worksheet('character')
+        # Call current value of strength and add 10 to it.
+        cell_to_update = worksheet_to_update.acell('H2').value
+        class_buff = int(cell_to_update) + int(10)
+        worksheet_to_update.update_cell(2,8, int(class_buff))
+    elif player_class == "ranger" or player_class =="Ranger":
+        worksheet_to_update = SHEET.worksheet('character')
+        # Call current value of dexterity and add 10 to it.
+        cell_to_update = worksheet_to_update.acell('G2').value
+        class_buff = int(cell_to_update) + int(10)
+        worksheet_to_update.update_cell(2,7, int(class_buff))
+    else:
+        worksheet_to_update = SHEET.worksheet('character')
+        # Call current value of luck and add 10 to it.
+        cell_to_update = worksheet_to_update.acell('F2').value
+        class_buff = int(cell_to_update) + int(10)
+        worksheet_to_update.update_cell(2,6, int(class_buff))
+        
+
 
 
 
@@ -206,5 +233,9 @@ add_race()
 add_player_class()
 add_preferred_weapon()
 add_race_modifiers(race)
+add_class_modifiers(player_class)
+
+
+
 
 
