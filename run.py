@@ -1,34 +1,37 @@
-import gspread
 import time
+import gspread
+import os
 from google.oauth2.service_account import Credentials
+
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
+    "https://www.googleapis.com/auth/drive",
+]
 
 CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("the_cave")
 
+
 def default_player_stats():
     """
     Places default player stats into google sheet before any modifications can be made or buffs.
     """
-    worksheet_to_update = SHEET.worksheet('character')
+    worksheet_to_update = SHEET.worksheet("character")
     # character's default health points
-    worksheet_to_update.update_cell(2,5, int(100)) 
+    worksheet_to_update.update_cell(2, 5, int(100))
     # character's default luck
-    worksheet_to_update.update_cell(2,6, int(10))
+    worksheet_to_update.update_cell(2, 6, int(10))
     # character's default dexterity
-    worksheet_to_update.update_cell(2,7, int(10))
+    worksheet_to_update.update_cell(2, 7, int(10))
     # character's default strength
-    worksheet_to_update.update_cell(2,8, int(10))
+    worksheet_to_update.update_cell(2, 8, int(10))
     # character's default attack
-    worksheet_to_update.update_cell(2,9, int(10))
+    worksheet_to_update.update_cell(2, 9, int(10))
     # character's default defense
-    worksheet_to_update.update_cell(2,10, int(20))
+    worksheet_to_update.update_cell(2, 10, int(20))
 
 
 def fprint(str, delay=0):
@@ -38,8 +41,9 @@ def fprint(str, delay=0):
     print("\n" + str)
     time.sleep(delay)
 
+
 def get_name():
-    fprint("Welcome, wanderer.\n",1)
+    fprint("Welcome, wanderer.\n", 1)
     print("What is your name?")
     while True:
         name = input("\n> ")
@@ -51,49 +55,67 @@ def get_name():
             break
     return name
 
+
 def add_name():
     """
     Adds player name to character worksheet
     """
-    worksheet_to_update = SHEET.worksheet('character')
-    worksheet_to_update.update_cell(2,1, name)
-    
+    worksheet_to_update = SHEET.worksheet("character")
+    worksheet_to_update.update_cell(2, 1, name)
+
 
 def get_race():
     """
     Player chooses their race, each different option add different statistics to the player's core scores
     """
     fprint("Tell me, what race are you?\n", 1)
-    fprint("Human: Adaptable and ambitious, humans are the jack of all trades when it comes to races.", 1)
-    fprint("Elf: Known for their beauty and grace, elves excel at acrobatics and swiftness.", 1)
+    fprint(
+        "Human: Adaptable and ambitious, humans are the jack of all trades when it comes to races.",
+        1,
+    )
+    fprint(
+        "Elf: Known for their beauty and grace, elves excel at acrobatics and swiftness.",
+        1,
+    )
     fprint("Dwarf: Solid and stout, dwarves are as stubborn as they are strong.\n", 1)
     while True:
         race = input("My race is: ")
         races = ["Human", "human", "Dwarf", "dwarf", "Elf", "elf"]
         if race in races:
-            print(f"Nice to meet you, {race}. You are the first {race} to be seen here in a long, long time.")
+            print(
+                f"Nice to meet you, {race}. You are the first {race} to be seen here in a long, long time."
+            )
             break
         else:
-            print("Please type one of the races listed and ensure there is a capital letter.")
+            print(
+                "Please type one of the races listed and ensure there is a capital letter."
+            )
             continue
     return race
+
 
 def add_race():
     """
     Adds player race to character worksheet
     """
-    worksheet_to_update = SHEET.worksheet('character')
-    worksheet_to_update.update_cell(2,2, race)
-    
+    worksheet_to_update = SHEET.worksheet("character")
+    worksheet_to_update.update_cell(2, 2, race)
+
 
 def get_class():
     """
     Player chooses their class, each different option add different statistics to the player's core scores
     """
-    fprint("You seem fairly capable of handling yourself. In which area do your expertise lie?\n", 1)
+    fprint(
+        "You seem fairly capable of handling yourself. In which area do your expertise lie?\n",
+        1,
+    )
     fprint("Warrior: Strong and formidable, well versed in the art of melee combat.", 1)
     fprint("Ranger: A hunter, their work depends of their stealth and instincts", 1)
-    fprint("Mage: Intelligent and shrewd, as long as they have something to channel it, they can control magic.\n", 1)
+    fprint(
+        "Mage: Intelligent and shrewd, as long as they have something to channel it, they can control magic.\n",
+        1,
+    )
     while True:
         player_class = input("My class is: ")
         player_classes = ["warrior", "ranger", "mage", "Warrior", "Ranger", "Mage"]
@@ -105,19 +127,23 @@ def get_class():
             continue
     return player_class
 
+
 def add_player_class():
     """
     Adds player class to character worksheet
     """
-    worksheet_to_update = SHEET.worksheet('character')
-    worksheet_to_update.update_cell(2,3, player_class)
+    worksheet_to_update = SHEET.worksheet("character")
+    worksheet_to_update.update_cell(2, 3, player_class)
 
 
 def preferred_weapon(player_class):
     """
     Player chooses their preferred weapon, each class has different options.
     """
-    fprint("I'm sure you're strong in a fight, but if you had to choose, which weapon would be your preference?\n", 1)
+    fprint(
+        "I'm sure you're strong in a fight, but if you had to choose, which weapon would be your preference?\n",
+        1,
+    )
     if player_class == "warrior" or player_class == "Warrior":
         fprint("Sword")
         fprint("or")
@@ -131,7 +157,7 @@ def preferred_weapon(player_class):
             else:
                 print("Please type one of the weapons listed.")
                 continue
-    elif player_class == "ranger" or player_class =="Ranger":
+    elif player_class == "ranger" or player_class == "Ranger":
         fprint("Dagger")
         fprint("or")
         fprint("Bow")
@@ -164,8 +190,9 @@ def add_preferred_weapon():
     """
     Adds player weapon to character worksheet
     """
-    worksheet_to_update = SHEET.worksheet('character')
-    worksheet_to_update.update_cell(2,4, weapon)
+    worksheet_to_update = SHEET.worksheet("character")
+    worksheet_to_update.update_cell(2, 4, weapon)
+
 
 def add_race_modifiers(race):
     """
@@ -175,15 +202,16 @@ def add_race_modifiers(race):
     Elf gets + 10 to dexterity
     """
     if race == "Human" or race == "human":
-        worksheet_to_update = SHEET.worksheet('character')
-        worksheet_to_update.update_cell(2,7, int(15))
-        worksheet_to_update.update_cell(2,8, int(15))
+        worksheet_to_update = SHEET.worksheet("character")
+        worksheet_to_update.update_cell(2, 7, int(15))
+        worksheet_to_update.update_cell(2, 8, int(15))
     elif race == "Dwarf" or race == "dwarf":
-        worksheet_to_update = SHEET.worksheet('character')
-        worksheet_to_update.update_cell(2,8, int(20))
+        worksheet_to_update = SHEET.worksheet("character")
+        worksheet_to_update.update_cell(2, 8, int(20))
     else:
-        worksheet_to_update = SHEET.worksheet('character')
-        worksheet_to_update.update_cell(2,7, int(20))
+        worksheet_to_update = SHEET.worksheet("character")
+        worksheet_to_update.update_cell(2, 7, int(20))
+
 
 def add_class_modifiers(player_class):
     """
@@ -193,25 +221,34 @@ def add_class_modifiers(player_class):
     Mage gets +10 to luck.
     """
     if player_class == "warrior" or player_class == "Warrior":
-        worksheet_to_update = SHEET.worksheet('character')
+        worksheet_to_update = SHEET.worksheet("character")
         # Call current value of strength and add 10 to it.
-        cell_to_update = worksheet_to_update.acell('H2').value
+        cell_to_update = worksheet_to_update.acell("H2").value
         class_buff = int(cell_to_update) + int(10)
-        worksheet_to_update.update_cell(2,8, int(class_buff))
-    elif player_class == "ranger" or player_class =="Ranger":
-        worksheet_to_update = SHEET.worksheet('character')
+        worksheet_to_update.update_cell(2, 8, int(class_buff))
+    elif player_class == "ranger" or player_class == "Ranger":
+        worksheet_to_update = SHEET.worksheet("character")
         # Call current value of dexterity and add 10 to it.
-        cell_to_update = worksheet_to_update.acell('G2').value
+        cell_to_update = worksheet_to_update.acell("G2").value
         class_buff = int(cell_to_update) + int(10)
-        worksheet_to_update.update_cell(2,7, int(class_buff))
+        worksheet_to_update.update_cell(2, 7, int(class_buff))
     else:
-        worksheet_to_update = SHEET.worksheet('character')
+        worksheet_to_update = SHEET.worksheet("character")
         # Call current value of luck and add 10 to it.
-        cell_to_update = worksheet_to_update.acell('F2').value
+        cell_to_update = worksheet_to_update.acell("F2").value
         class_buff = int(cell_to_update) + int(10)
-        worksheet_to_update.update_cell(2,6, int(class_buff))
-        
+        worksheet_to_update.update_cell(2, 6, int(class_buff))
 
+
+def wake_up():
+    """
+    Introduction for player, section 1 of the story.
+    """
+    fprint(
+        "You wake up in a cold, damp cave...\n You can't remember the last thing that happened to you but here you are; \n Shivering... \n Confused... \n Lost...",
+        2,
+    )
+    print("Do you...?")
 
 
 default_player_stats()
@@ -225,8 +262,5 @@ add_player_class()
 add_preferred_weapon()
 add_race_modifiers(race)
 add_class_modifiers(player_class)
-
-
-
-
-
+os.system("clear")
+wake_up()
