@@ -1,6 +1,7 @@
 import time
-import gspread
 import os
+import gspread
+
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -43,6 +44,9 @@ def fprint(str, delay=0):
 
 
 def get_name():
+    """
+    Gets name of player.
+    """
     fprint("Welcome, wanderer.\n", 1)
     print("What is your name?")
     while True:
@@ -56,7 +60,7 @@ def get_name():
     return name
 
 
-def add_name():
+def add_name(name):
     """
     Adds player name to character worksheet
     """
@@ -94,7 +98,7 @@ def get_race():
     return race
 
 
-def add_race():
+def add_race(race):
     """
     Adds player race to character worksheet
     """
@@ -128,7 +132,7 @@ def get_class():
     return player_class
 
 
-def add_player_class():
+def add_player_class(player_class):
     """
     Adds player class to character worksheet
     """
@@ -186,7 +190,7 @@ def preferred_weapon(player_class):
     return weapon
 
 
-def add_preferred_weapon():
+def add_preferred_weapon(weapon):
     """
     Adds player weapon to character worksheet
     """
@@ -251,16 +255,20 @@ def wake_up():
     print("Do you...?")
 
 
-default_player_stats()
-name = get_name()
-race = get_race()
-player_class = get_class()
-weapon = preferred_weapon(player_class)
-add_name()
-add_race()
-add_player_class()
-add_preferred_weapon()
-add_race_modifiers(race)
-add_class_modifiers(player_class)
-os.system("clear")
-wake_up()
+def start_game():
+    """
+    Begins game, collecting information such as player name, class, race and preferred weapons.
+    """
+    default_player_stats()
+    name = get_name()
+    race = get_race()
+    player_class = get_class()
+    weapon = preferred_weapon(player_class)
+    add_name(name)
+    add_race(race)
+    add_player_class(player_class)
+    add_preferred_weapon(weapon)
+    add_race_modifiers(race)
+    add_class_modifiers(player_class)
+    os.system("clear")
+    wake_up()
