@@ -229,7 +229,8 @@ def start_game():
     add_race_modifiers(race)
     add_class_modifiers(player_class)
     os.system("clear")
-    event.wake_up()
+    answer1 = event.wake_up()
+    event.decision_one(answer1)
 
 
 if __name__ == "__main__":
