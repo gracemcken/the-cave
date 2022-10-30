@@ -96,6 +96,7 @@ Testing document can be found [here](TESTING.md)
 Bug | Status | Fix
 ----|--------|----
 Regardless of class chosen, player was only given warrior options for weapons | Resolved | Rather than just use '==' for one class and 'or' for second option, use '==' for both classes.
+Large gap between line breaks instead of starting on new line | Resolved | Instead of using '\', started new string.
 ## Known Issues
 
 
