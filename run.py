@@ -61,7 +61,8 @@ def add_name(name):
 
 def get_race():
     """
-    Player chooses their race, each different option add different statistics to the player's core scores
+    Player chooses their race, each different option
+    add different statistics to the player's core scores
     """
     print("Tell me, what race are you?\n")
     print(
@@ -75,9 +76,8 @@ def get_race():
         race = input("My race is: ")
         races = ["Human", "human", "Dwarf", "dwarf", "Elf", "elf"]
         if race in races:
-            print(
-                f"Nice to meet you, {race}. You are the first {race} to be seen here in a long, long time."
-            )
+            print(f"Nice to meet you, {race}. You are the first {race}")
+            print("to be seen here in a long, long time.")
             break
         else:
             print(
@@ -97,17 +97,17 @@ def add_race(race):
 
 def get_class():
     """
-    Player chooses their class, each different option add different statistics to the player's core scores
+    Player chooses their class, each different option add
+    different statistics to the player's core scores
     """
     print(
         "You seem fairly capable of handling yourself. In which area do your expertise lie?\n",
         1,
     )
-    print("Warrior: Strong and formidable, well versed in the art of melee combat.", 1)
-    print("Ranger: A hunter, their work depends of their stealth and instincts", 1)
-    print(
-        "Mage: Intelligent and shrewd, as long as they have something to channel it, they can control magic.\n"
-    )
+    print("Warrior: Strong and formidable, well versed in the art of melee combat.")
+    print("Ranger: A hunter, their work depends of their stealth and instincts")
+    print("Mage: Intelligent and shrewd;")
+    print("as long as they have something to channel it, they can control magic.\n")
     while True:
         player_class = input("My class is: ")
         player_classes = ["warrior", "ranger", "mage", "Warrior", "Ranger", "Mage"]
@@ -132,10 +132,8 @@ def preferred_weapon(player_class):
     """
     Player chooses their preferred weapon, each class has different options.
     """
-    print(
-        "I'm sure you're strong in a fight, but if you had to choose, which weapon would be your preference?\n",
-        1,
-    )
+    print("I'm sure you're strong in a fight, but if you had to choose,")
+    print("which weapon would be your preference?\n")
     if player_class == "warrior" or player_class == "Warrior":
         print("Sword")
         print("or")
