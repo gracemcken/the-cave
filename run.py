@@ -1,6 +1,7 @@
 import os
 import gspread
 import stats as stat
+import events as event
 
 
 from google.oauth2.service_account import Credentials
@@ -212,73 +213,11 @@ def add_class_modifiers(player_class):
         worksheet_to_update.update_cell(2, 6, int(class_buff))
 
 
-def wake_up():
-    """
-    Introduction for player, section 1 of the story.
-    """
-    print("You wake up in a cold, damp cave...\n")
-    print("You can't remember the last thing that happened to you but here you are; \n")
-    print("Shivering... \n Confused... \n Lost...\n")
-    print(
-        "In the distance you can see a faint glow of light several metres ahead of you."
-    )
-    print("Do you...?")
-    print(
-        "1. Stand up and head directly towards the light,\n"
-        "despite being unable to see your surroundings.\n"
-    )
-    print("2. Feel around the area for any item that could be of use to you.\n")
-    print("3. Close your eyes again and wish for this game to end.\n")
-    print("Please choose a option number\n")
-    while True:
-        answer1 = input("")
-        answers = ["1", "2", "3"]
-        if answer1 in answers:
-            print(
-                f"You have chosen option {answer1}."
-                " Let us see if the odds are in your favour..."
-            )
-        else:
-            print("Please type either '1', '2', or '3'.")
-            continue
-        return answer1
-
-
-def decision_one(answer1):
-    """
-    Generates outcome of first decision in game
-    """
-    if answer1 == "1":
-        dex = stat.roll_dex()
-        if dex >= 25:
-            stage_2()
-        else:
-            fail_one()
-    elif answer1 == "2":
-        roll_luck()
-        if final_luck >= 15:
-            stage_2()
-        else:
-            fail_one()
-    else:
-        print("You close your eyes and fall asleep.\n")
-        print("The game is over. You will never know what could have been.")
-        os.system("clear")
-        print("Want to start again? Please type yes or no")
-        user_ans = input("")
-        if user_ans == "Yes" or user_ans == "yes":
-            start_game()
-        elif user_ans == "No" or user_ans == "no":
-            print("GAME OVER. THANK YOU FOR PLAYING.")
-        else:
-            print("Please type either yes/Yes or no/No")
-
-
 def start_game():
     """
     Begins game, collecting information such as player name, class, race and preferred weapons.
     """
-    default_player_stats()
+    stat.default_player_stats()
     name = get_name()
     race = get_race()
     player_class = get_class()
@@ -290,7 +229,7 @@ def start_game():
     add_race_modifiers(race)
     add_class_modifiers(player_class)
     os.system("clear")
-    wake_up()
+    event.wake_up()
 
 
 if __name__ == "__main__":

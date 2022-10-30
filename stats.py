@@ -45,6 +45,13 @@ def roll_dex():
     final_dex = int(dexterity) + dice_roll
     return final_dex
 
+
 def roll_luck():
-
-
+    """
+    Gets player's luck and rolls extra score.
+    """
+    worksheet_to_pull = SHEET.worksheet("character")
+    luck = worksheet_to_pull.acell("F2").value
+    dice_roll = random.randint(0, 15)
+    final_luck = int(luck) + dice_roll
+    return final_luck
