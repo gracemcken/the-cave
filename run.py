@@ -83,9 +83,8 @@ def get_class():
     Player chooses their class, each different option add
     different statistics to the player's core scores
     """
-    print(
-        "You seem fairly capable of handling yourself. In which area do your expertise lie?\n"
-    )
+    print("You seem fairly capable of handling yourself. In which area do")
+    print("your expertise lie?\n")
     print("Warrior: Strong and formidable, well versed in the art of melee combat.")
     print("Ranger: A hunter, their work depends of their stealth and instincts")
     print("Mage: Intelligent and shrewd;")

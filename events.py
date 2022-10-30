@@ -154,7 +154,7 @@ def find_item_one():
     Text that runs if the player successfully passes the luck check. Results in
     torch and rusted key being added to inventory.
     """
-    print("Success! You're not sure if it's put luck or someone")
+    print("Success! You're not sure if it's just luck or someone")
     print("is looking out for you, but as your hands feel around")
     print("the floor in front of you, you come into contact with")
     print("what feels like a satchel. Inside you find what you can assume")
@@ -165,5 +165,8 @@ def find_item_one():
     print(
         "With your new items in your inventory, you set off safely towards the light."
     )
+    worksheet_to_update = SHEET.worksheet("inventory")
+    worksheet_to_update.update_cell(1, 1, "torch")
+    worksheet_to_update.update_cell(2, 1, "rusted key")
 
     stage_2()
