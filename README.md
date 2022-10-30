@@ -93,9 +93,9 @@ I wanted to create a text based adventure game based on the "Choose your own adv
 Testing document can be found [here](TESTING.md)
 ## Bugs
 
-Bug | Status 
-----|-------
-
+Bug | Status | Fix
+----|--------|----
+Regardless of class chosen, player was only given warrior options for weapons | Resolved | Rather than just use '==' for one class and 'or' for second option, use '==' for both classes.
 ## Known Issues
 
 
