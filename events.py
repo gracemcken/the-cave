@@ -63,7 +63,7 @@ def decision_one(answer1):
     elif answer1 == "2":
         luck = stat.roll_luck()
         if luck >= 15:
-            stage_2()
+            find_item_one()
         else:
             fail_two()
     else:
@@ -83,7 +83,8 @@ def decision_one(answer1):
 def fail_one():
     """
     Function that decides what happens
-    should the player fail the first choice.
+    should the player fail the first option
+    in the first choice.
     """
     print("Bang! You trip over something and land on your hands")
     print("and knees. It's painful and although you can't see it,")
@@ -92,6 +93,37 @@ def fail_one():
     print("Do you...?")
     print("1. Stand up and continue towards the light.\n")
     print("2. Feel around the area for any item that could be of use to you.\n ")
+    print("3. Close your eyes again and wish for this game to end.\n")
+    while True:
+        answer1 = input("")
+        answers = ["1", "2", "3"]
+        if answer1 in answers:
+            print(
+                f"You have chosen option {answer1}."
+                " Let us see how you fare this time..."
+            )
+            decision_one(answer1)
+        else:
+            print("Please type either '1', '2', or '3'.")
+            continue
+        return answer1
+
+
+def fail_two():
+    """
+    Function that decides what happens
+    should the player fail the second option
+    of the first choice.
+    """
+    print("As you feel around, your hands meet the rough")
+    print("edge of the stone wall. 'Success!' you think.")
+    print("Surely you can use this as a way to safely navigate")
+    print("to the exit. Instead, you cut open your hand")
+    print("on a sharp bit of rock jutting out from the wall.\n")
+    print("You lose 5 health points.\n")
+    print("Do you...?\n")
+    print("1. Stand up and continue towards the light.\n")
+    print("2. Continue feeling around the area.\n ")
     print("3. Close your eyes again and wish for this game to end.\n")
     while True:
         answer1 = input("")
