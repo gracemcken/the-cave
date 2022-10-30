@@ -101,8 +101,7 @@ def get_class():
     different statistics to the player's core scores
     """
     print(
-        "You seem fairly capable of handling yourself. In which area do your expertise lie?\n",
-        1,
+        "You seem fairly capable of handling yourself. In which area do your expertise lie?\n"
     )
     print("Warrior: Strong and formidable, well versed in the art of melee combat.")
     print("Ranger: A hunter, their work depends of their stealth and instincts")
@@ -236,8 +235,30 @@ def wake_up():
     """
     print("You wake up in a cold, damp cave...\n")
     print("You can't remember the last thing that happened to you but here you are; \n")
-    print("Shivering... \n Confused... \n Lost...")
+    print("Shivering... \n Confused... \n Lost...\n")
+    print(
+        "In the distance you can see a faint glow of light several metres ahead of you."
+    )
     print("Do you...?")
+    print(
+        "1. Stand up and head directly towards the light,\n"
+        "despite being unable to see your surroundings.\n"
+    )
+    print("2. Feel around the area for any item that could be of use to you.\n")
+    print("3. Close your eyes again and wish for this game to end.\n")
+    print("Please choose a option number\n")
+    while True:
+        answer1 = input("")
+        answers = ["1", "2", "3"]
+        if answer1 in answers:
+            print(
+                f"You have chosen option {answer1}."
+                " Let us see if the odds are in your favour..."
+            )
+        else:
+            print("Please type either '1', '2', or '3'.")
+            continue
+        return answer1
 
 
 def start_game():
