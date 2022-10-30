@@ -1,4 +1,3 @@
-import time
 import os
 import gspread
 
@@ -237,9 +236,9 @@ def wake_up():
     """
     Introduction for player, section 1 of the story.
     """
-    print(
-        "You wake up in a cold, damp cave...\n You can't remember the last thing that happened to you but here you are; \n Shivering... \n Confused... \n Lost..."
-    )
+    print("You wake up in a cold, damp cave...\n")
+    print("You can't remember the last thing that happened to you but here you are; \n")
+    print("Shivering... \n Confused... \n Lost...")
     print("Do you...?")
 
 
