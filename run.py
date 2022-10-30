@@ -35,19 +35,11 @@ def default_player_stats():
     worksheet_to_update.update_cell(2, 10, int(20))
 
 
-def fprint(str, delay=0):
-    """
-    Alters speed of text. Source: Elijah Henderson
-    """
-    print("\n" + str)
-    time.sleep(delay)
-
-
 def get_name():
     """
     Gets name of player.
     """
-    fprint("Welcome, wanderer.\n", 1)
+    print("Welcome, wanderer.\n")
     print("What is your name?")
     while True:
         name = input("\n> ")
@@ -72,16 +64,14 @@ def get_race():
     """
     Player chooses their race, each different option add different statistics to the player's core scores
     """
-    fprint("Tell me, what race are you?\n", 1)
-    fprint(
-        "Human: Adaptable and ambitious, humans are the jack of all trades when it comes to races.",
-        1,
+    print("Tell me, what race are you?\n")
+    print(
+        "Human: Adaptable and ambitious, humans are the jack of all trades when it comes to races."
     )
-    fprint(
-        "Elf: Known for their beauty and grace, elves excel at acrobatics and swiftness.",
-        1,
+    print(
+        "Elf: Known for their beauty and grace, elves excel at acrobatics and swiftness."
     )
-    fprint("Dwarf: Solid and stout, dwarves are as stubborn as they are strong.\n", 1)
+    print("Dwarf: Solid and stout, dwarves are as stubborn as they are strong.\n")
     while True:
         race = input("My race is: ")
         races = ["Human", "human", "Dwarf", "dwarf", "Elf", "elf"]
@@ -110,15 +100,14 @@ def get_class():
     """
     Player chooses their class, each different option add different statistics to the player's core scores
     """
-    fprint(
+    print(
         "You seem fairly capable of handling yourself. In which area do your expertise lie?\n",
         1,
     )
-    fprint("Warrior: Strong and formidable, well versed in the art of melee combat.", 1)
-    fprint("Ranger: A hunter, their work depends of their stealth and instincts", 1)
-    fprint(
-        "Mage: Intelligent and shrewd, as long as they have something to channel it, they can control magic.\n",
-        1,
+    print("Warrior: Strong and formidable, well versed in the art of melee combat.", 1)
+    print("Ranger: A hunter, their work depends of their stealth and instincts", 1)
+    print(
+        "Mage: Intelligent and shrewd, as long as they have something to channel it, they can control magic.\n"
     )
     while True:
         player_class = input("My class is: ")
@@ -144,14 +133,14 @@ def preferred_weapon(player_class):
     """
     Player chooses their preferred weapon, each class has different options.
     """
-    fprint(
+    print(
         "I'm sure you're strong in a fight, but if you had to choose, which weapon would be your preference?\n",
         1,
     )
     if player_class == "warrior" or player_class == "Warrior":
-        fprint("Sword")
-        fprint("or")
-        fprint("Axe")
+        print("Sword")
+        print("or")
+        print("Axe")
         while True:
             weapon = input("")
             weapons = ["sword", "Sword", "axe", "Axe"]
@@ -162,9 +151,9 @@ def preferred_weapon(player_class):
                 print("Please type one of the weapons listed.")
                 continue
     elif player_class == "ranger" or player_class == "Ranger":
-        fprint("Dagger")
-        fprint("or")
-        fprint("Bow")
+        print("Dagger")
+        print("or")
+        print("Bow")
         while True:
             weapon = input("")
             weapons = ["dagger", "Dagger", "bow", "Bow"]
@@ -175,9 +164,9 @@ def preferred_weapon(player_class):
                 print("Please type one of the weapons listed.")
                 continue
     else:
-        fprint("Staff")
-        fprint("or")
-        fprint("Spell Tome")
+        print("Staff")
+        print("or")
+        print("Spell Tome")
         while True:
             weapon = input("")
             weapons = ["staff", "Staff", "spell tome", "Spell Tome"]
@@ -248,9 +237,8 @@ def wake_up():
     """
     Introduction for player, section 1 of the story.
     """
-    fprint(
-        "You wake up in a cold, damp cave...\n You can't remember the last thing that happened to you but here you are; \n Shivering... \n Confused... \n Lost...",
-        2,
+    print(
+        "You wake up in a cold, damp cave...\n You can't remember the last thing that happened to you but here you are; \n Shivering... \n Confused... \n Lost..."
     )
     print("Do you...?")
 
