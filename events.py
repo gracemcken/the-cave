@@ -1,4 +1,8 @@
 import os
+
+"""
+For clearing the terminal after major events.
+"""
 import gspread
 import stats as stat
 from run import start_game
@@ -147,3 +151,23 @@ def stage_2():
     print("The source of the light is a iron lantern fixed to the wall.")
     print("The cave seems to be starting to form into a carved out hallway,")
     print("with more lanterns lining the pathway down.")
+
+
+def find_item_one():
+    """
+    Text that runs if the player successfully passes the luck check. Results in
+    torch and rusted key being added to inventory.
+    """
+    print("Success! You're not sure if it's put luck or someone")
+    print("is looking out for you, but as your hands feel around")
+    print("the floor in front of you, you come into contact with")
+    print("what feels like a satchel. Inside you find what you can assume")
+    print("is a torch and some flint, along with what seems to be a rusted key.\n")
+    print("You pocket the key for now and light your new torch, illuminating the")
+    print("cave around you. The area is littered with sharp rocks and little")
+    print("else. You are lucky to now be able to see where you go.\n")
+    print(
+        "With your new items in your inventory, you set off safely towards the light."
+    )
+    os.system("clear")
+    stage_2()
