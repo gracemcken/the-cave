@@ -50,17 +50,16 @@
 
 
 # Site Overview
-The Cave is a text adventure RPG game where the player choses their race, class and preferred weapon. These initial decisions impact the player's stats in-game and whether or not they will be able to escape the cave! 
+The Cave is a text adventure RPG game where the player choses their race, class and preferred weapon. These initial decisions impact the player's stats in-game and whether or not they will be able to escape the cave alive! Decisions that impact the game are stored in Google Sheets and are retrieved when relevant to the game.
 
 ## Goal
-
+I wanted to create a text based adventure game based on the "Choose your own adventure" books I used to read as a child, while also incorporating some Dungeons & Dragons elements to the game. My goal was to create something that has been done before but with an added twist of your decisions actually impacting whether or not luck will be on your side.
 
 <hr>
 
 ## Technologies used
 
-- [HTML5](https://en.wikipedia.org/wiki/HTML5) for the contents and structure of the website.
-- [CSS3](https://en.wikipedia.org/wiki/CSS) for the styling and animations.
+- [Python](https://www.python.org/) for the main game-play.
 - [GitHub](https://github.com/) as a remote repository.
 - [Heroku](https://heroku.com) to deploy the website.
 - [Visual Studio Code](https://code.visualstudio.com/) as a local IDE & repository.
@@ -68,7 +67,10 @@ The Cave is a text adventure RPG game where the player choses their race, class 
 # UX
 ## Target Audience
 
-
+- Old school RPGers who would have played choose your own adventure novels in their youth
+- People who are fans of Dungeons and Dragons
+- Those who enjoy basic text adventure games
+- Those who enjoy interactive novels
 ## User Stories
 
 - As a user:

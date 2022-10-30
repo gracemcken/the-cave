@@ -272,3 +272,7 @@ def start_game():
     add_class_modifiers(player_class)
     os.system("clear")
     wake_up()
+
+
+if __name__ == "__main__":
+    start_game()
