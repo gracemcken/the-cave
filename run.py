@@ -217,6 +217,7 @@ def start_game():
     Begins game, collecting information such as player name, class, race and preferred weapons.
     """
     stat.default_player_stats()
+    stat.default_player_inventory()
     name = get_name()
     race = get_race()
     player_class = get_class()
