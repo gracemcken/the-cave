@@ -35,6 +35,14 @@ def default_player_stats():
     worksheet_to_update.update_cell(2, 10, int(20))
 
 
+def default_player_inventory():
+    """
+    Clears worksheet of any previous inventory.
+    """
+    worksheet_to_update = SHEET.worksheet("inventory")
+    worksheet_to_update.clear()
+
+
 def roll_dex():
     """
     Gets player's dexterity and rolls extra score.
