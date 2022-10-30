@@ -1,10 +1,9 @@
 import os
 import gspread
+from google.oauth2.service_account import Credentials
 import stats as stat
 import events as event
 
-
-from google.oauth2.service_account import Credentials
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",

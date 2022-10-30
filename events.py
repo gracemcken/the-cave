@@ -1,14 +1,10 @@
 import os
 
-"""
-For clearing the terminal after major events.
-"""
 import gspread
+from google.oauth2.service_account import Credentials
 import stats as stat
 from run import start_game
 
-
-from google.oauth2.service_account import Credentials
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -169,5 +165,5 @@ def find_item_one():
     print(
         "With your new items in your inventory, you set off safely towards the light."
     )
-    os.system("clear")
+
     stage_2()
