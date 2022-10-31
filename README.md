@@ -101,6 +101,7 @@ Bug | Status | Fix | Images of bug
 Regardless of class chosen, player was only given warrior options for weapons | Resolved | Rather than just use '==' for one class and 'or' for second option, use '==' for both classes. | ![class-bug](readme_docs/bug_screenshots/class_bug.png)
 Large gap between line breaks instead of starting on new line | Resolved | Instead of using 'backslash', started new string. | ![gap-bug](readme_docs/bug_screenshots/gap_bug.png)
 Health points were not being updated after player suffers HP loss | Resolved | I had forgotten to add .value to the statement. | ![hp-bug](readme_docs/bug_screenshots/hp_bug.png)
+Using if statements in main file caused the failure function to trigger and prevented HP from updating | Resolved | Placed update hp function in events.py in failure function | ![placement-bug](readme_docs/bug_screenshots/placement_bug.png)
 ## Known Issues
 
 
