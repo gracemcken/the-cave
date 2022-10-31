@@ -86,6 +86,7 @@ def fail_one():
     should the player fail the first option
     in the first choice.
     """
+    stat.update_hp(5)
     print("Bang! You trip over something and land on your hands")
     print("and knees. It's painful and although you can't see it,")
     print("you can feel blood trickle down the palms of your hands.\n")
