@@ -116,6 +116,7 @@ def fail_two():
     should the player fail the second option
     of the first choice.
     """
+    stat.update_hp(5)
     print("As you feel around, your hands meet the rough")
     print("edge of the stone wall. 'Success!' you think.")
     print("Surely you can use this as a way to safely navigate")
