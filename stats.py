@@ -63,3 +63,13 @@ def roll_luck():
     dice_roll = random.randint(0, 15)
     final_luck = int(luck) + dice_roll
     return final_luck
+
+
+def update_hp(num):
+    """
+    Updates player's health points.
+    """
+    worksheet_to_update = SHEET.worksheet("character")
+    health = worksheet_to_update.acell("E2")
+    new_health = int(health) - int(num)
+    worksheet_to_update.update("E2", int(new_health))
