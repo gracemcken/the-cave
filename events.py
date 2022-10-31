@@ -57,6 +57,10 @@ def decision_one(answer1):
     if answer1 == "1":
         dex = stat.roll_dex()
         if dex >= 25:
+            print("Thankfully by carefully walking slowly,")
+            print("you manage to make your way towards the light")
+            print("without incident. You can now see your")
+            print("surroundings a little better.")
             stage_2()
         else:
             fail_one()
