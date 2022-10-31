@@ -232,8 +232,8 @@ def start_game():
     event.decision_one(answer1)
     if event.fail_one():
         stat.update_hp(5)
-    else:
-        event.stage_2()
+    if event.fail_two():
+        stat.update_hp(5)
 
 
 if __name__ == "__main__":
