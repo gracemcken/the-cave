@@ -229,6 +229,7 @@ def start_game():
     add_class_modifiers(player_class)
     os.system("clear")
     answer1 = event.wake_up()
+    os.system("clear")
     event.decision_one(answer1)
 
 
