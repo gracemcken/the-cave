@@ -73,7 +73,6 @@ def decision_one(answer1):
     else:
         print("You close your eyes and fall asleep.\n")
         print("The game is over. You will never know what could have been.")
-        os.system("clear")
         print("Want to start again? Please type yes or no")
         user_ans = input("")
         if user_ans == "Yes" or user_ans == "yes":
@@ -160,7 +159,6 @@ def stage_2():
         print("lanterns provide an extra bit of light for you. You")
         print("continue down the corridor, following the more")
         print("structured pathway.")
-        os.system("clear")
         stage_3()
     else:
         print("While the lanterns seem to continue down the hallway,")
