@@ -70,6 +70,6 @@ def update_hp(num):
     Updates player's health points.
     """
     worksheet_to_update = SHEET.worksheet("character")
-    health = worksheet_to_update.acell("E2")
+    health = worksheet_to_update.acell("E2").value
     new_health = int(health) - int(num)
     worksheet_to_update.update("E2", int(new_health))
