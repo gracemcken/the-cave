@@ -87,7 +87,8 @@ I wanted to create a text based adventure game based on the "Choose your own adv
 
 
 # Design
-
+Below is the flowchart I made to follow along while coding. I initially wrote this out on paper and then used [diagrams.net](https://www.diagrams.net/) to create it digitally.
+![flowchart](readme_docs/flowchart.png)
 
 <hr>
 
