@@ -96,10 +96,11 @@ Below is the flowchart I made to follow along while coding. I initially wrote th
 Testing document can be found [here](TESTING.md)
 ## Bugs
 
-Bug | Status | Fix
-----|--------|----
-Regardless of class chosen, player was only given warrior options for weapons | Resolved | Rather than just use '==' for one class and 'or' for second option, use '==' for both classes.
-Large gap between line breaks instead of starting on new line | Resolved | Instead of using '\', started new string.
+Bug | Status | Fix | Images of bug
+----|--------|-----|--------------
+Regardless of class chosen, player was only given warrior options for weapons | Resolved | Rather than just use '==' for one class and 'or' for second option, use '==' for both classes. | ![class-bug](readme_docs/bug_screenshots/class_bug.png)
+Large gap between line breaks instead of starting on new line | Resolved | Instead of using 'backslash', started new string. | ![gap-bug](readme_docs/bug_screenshots/gap_bug.png)
+Health points were not being updated after player suffers HP loss | Resolved | I had forgotten to add .value to the statement. | ![hp-bug](readme_docs/bug_screenshots/hp_bug.png)
 ## Known Issues
 
 
