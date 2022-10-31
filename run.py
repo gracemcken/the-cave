@@ -230,6 +230,10 @@ def start_game():
     os.system("clear")
     answer1 = event.wake_up()
     event.decision_one(answer1)
+    if event.fail_one():
+        stat.update_hp(5)
+    else:
+        event.stage_2()
 
 
 if __name__ == "__main__":
