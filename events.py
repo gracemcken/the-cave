@@ -148,11 +148,40 @@ def fail_two():
 
 def stage_2():
     """
-    Next stage of the story.
+    Scene 2 of the story and next decision.
     """
     print("The source of the light is a iron lantern fixed to the wall.")
     print("The cave seems to be starting to form into a carved out hallway,")
     print("with more lanterns lining the pathway down.")
+    worksheet_to_pull = SHEET.worksheet("inventory")
+    inventory = worksheet_to_pull.col_values(1)
+    if "torch" in inventory:
+        print("You already have a light source thankfully, but the")
+        print("lanterns provide an extra bit of light for you. You")
+        print("continue down the corridor, following the more")
+        print("structured pathway.")
+        os.system("clear")
+        stage_3()
+    else:
+        print("While the lanterns seem to continue down the hallway,")
+        print("you have no idea whether further along the path is lit.\n")
+        print("Do you...?\n")
+        print("1. Attempt to hoist one of the lanterns from the wall.\n")
+        print("2. Ignore them and continue on down the hall.")
+        print("3. Close your eyes again and wish for this game to end.\n")
+        print("Please choose a option number\n")
+        while True:
+            answer2 = input("")
+            answers = ["1", "2", "3"]
+            if answer2 in answers:
+                print(
+                    f"You have chosen option {answer2}."
+                    " Let us see if the odds are in your favour..."
+                )
+            else:
+                print("Please type either '1', '2', or '3'.")
+                continue
+            return answer2
 
 
 def find_item_one():
@@ -176,3 +205,24 @@ def find_item_one():
     worksheet_to_update.update_cell(2, 1, "rusted key")
 
     stage_2()
+
+
+def stage_3():
+    """
+    Scene 3 of the story and next decision.
+    """
+    print("Scene 3")
+
+
+def stage_4():
+    """
+    Scene 4 of the story and next decision.
+    """
+    print("Scene 4")
+
+
+def stage_5():
+    """
+    Scene 5 of the story and next decision.
+    """
+    print("Scene 5")
