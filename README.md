@@ -1,3 +1,5 @@
+![cave_banner](readme_docs/the_cave_banner.png)
+
 ![Last commit](https://img.shields.io/github/last-commit/gracemcken/the-cave) 
 ![Languages used](https://img.shields.io/github/languages/count/gracemcken/the-cave)
 ![Top Language used](https://img.shields.io/github/languages/top/gracemcken/the-cave)
