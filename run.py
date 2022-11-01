@@ -16,6 +16,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("the_cave")
 
+# Game set up functions. Each run at the beginning of the game.
+
 
 def get_name():
     """
@@ -209,6 +211,12 @@ def add_class_modifiers(player_class):
         cell_to_update = worksheet_to_update.acell("F2").value
         class_buff = int(cell_to_update) + int(10)
         worksheet_to_update.update_cell(2, 6, int(class_buff))
+
+
+# End of game start up functions.
+
+
+# Beginning of game-play below.
 
 
 def start_game():

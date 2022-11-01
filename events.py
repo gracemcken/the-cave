@@ -17,6 +17,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("the_cave")
 
+# SCENE 1 POTENTIAL EVENTS
+
 
 def wake_up():
     """
@@ -83,6 +85,9 @@ def decision_one(answer1):
             print("Please type either yes/Yes or no/No")
 
 
+# Stat roll failure events below:
+
+
 def fail_one():
     """
     Function that decides what happens
@@ -145,6 +150,39 @@ def fail_two():
         return answer1
 
 
+# Potential item pick up scene event, only
+# triggers if player passes stat roll after
+# choosing option 2 in scene 1.
+
+
+def find_item_one():
+    """
+    Text that runs if the player successfully passes the luck check. Results in
+    torch and rusted key being added to inventory.
+    """
+    print("Success! You're not sure if it's just luck or someone")
+    print("is looking out for you, but as your hands feel around")
+    print("the floor in front of you, you come into contact with")
+    print("what feels like a satchel. Inside you find what you can assume")
+    print("is a torch and some flint, along with what seems to be a rusted key.\n")
+    print("You pocket the key for now and light your new torch, illuminating the")
+    print("cave around you. The area is littered with sharp rocks and little")
+    print("else. You are lucky to now be able to see where you go.\n")
+    print(
+        "With your new items in your inventory, you set off safely towards the light."
+    )
+    worksheet_to_update = SHEET.worksheet("inventory")
+    worksheet_to_update.update_cell(1, 1, "torch")
+    worksheet_to_update.update_cell(2, 1, "rusted key")
+
+    stage_2()
+
+
+# END OF SCENE 1 EVENTS
+
+# SCENE 2 POTENTIAL EVENTS
+
+
 def stage_2():
     """
     Scene 2 of the story and next decision.
@@ -180,29 +218,6 @@ def stage_2():
                 print("Please type either '1', '2', or '3'.")
                 continue
             return answer2
-
-
-def find_item_one():
-    """
-    Text that runs if the player successfully passes the luck check. Results in
-    torch and rusted key being added to inventory.
-    """
-    print("Success! You're not sure if it's just luck or someone")
-    print("is looking out for you, but as your hands feel around")
-    print("the floor in front of you, you come into contact with")
-    print("what feels like a satchel. Inside you find what you can assume")
-    print("is a torch and some flint, along with what seems to be a rusted key.\n")
-    print("You pocket the key for now and light your new torch, illuminating the")
-    print("cave around you. The area is littered with sharp rocks and little")
-    print("else. You are lucky to now be able to see where you go.\n")
-    print(
-        "With your new items in your inventory, you set off safely towards the light."
-    )
-    worksheet_to_update = SHEET.worksheet("inventory")
-    worksheet_to_update.update_cell(1, 1, "torch")
-    worksheet_to_update.update_cell(2, 1, "rusted key")
-
-    stage_2()
 
 
 def stage_3():
