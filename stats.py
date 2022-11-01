@@ -15,6 +15,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("the_cave")
 
+# Game start up stat functions.
+
 
 def default_player_stats():
     """
@@ -43,6 +45,9 @@ def default_player_inventory():
     worksheet_to_update.clear()
 
 
+# Game-play stat roll functions.
+
+
 def roll_dex():
     """
     Gets player's dexterity and rolls extra score.
@@ -63,6 +68,9 @@ def roll_luck():
     dice_roll = random.randint(0, 15)
     final_luck = int(luck) + dice_roll
     return final_luck
+
+
+# Alter player stat functions.
 
 
 def update_hp(num):
