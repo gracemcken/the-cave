@@ -65,6 +65,7 @@ I wanted to create a text based adventure game based on the "Choose your own adv
 - [GitHub](https://github.com/) as a remote repository.
 - [Heroku](https://heroku.com) to deploy the website.
 - [Visual Studio Code](https://code.visualstudio.com/) as a local IDE & repository.
+- [diagram.net](https://diagram.net) for making the flowchart for the game.
 
 # UX
 ## Target Audience
