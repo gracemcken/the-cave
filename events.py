@@ -238,7 +238,7 @@ def decision_two(answer2):
             print("source! This will surely be useful!")
             worksheet_to_update = SHEET.worksheet("inventory")
             worksheet_to_update.update_cell(3, 1, "lantern")
-            stage_2()
+            stage_3()
         else:
             fail_three()
     elif answer2 == "2":
