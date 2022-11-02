@@ -214,10 +214,50 @@ def stage_2():
                     f"You have chosen option {answer2}."
                     " Let us see if the odds are in your favour..."
                 )
+                decision_two(answer2)
             else:
                 print("Please type either '1', '2', or '3'.")
                 continue
             return answer2
+
+
+def decision_two(answer2):
+    """
+    Generates outcome of second decision in game
+    """
+    if answer2 == "1":
+        strength = stat.roll_strength()
+        if strength >= 25:
+            print("With all of your strength, you attempt")
+            print("to pull the lantern from the wall without")
+            print("smashing the glass and burning your hand.\n")
+            print("You hear a clunk as the metal detaches from")
+            print("its place in the wall and the lantern comes")
+            print("off in your hand intact and still lit.\n")
+            print("Congratulations! You now have a portable light")
+            print("source! This will surely be useful!")
+            stage_2()
+        else:
+            fail_three()
+    elif answer2 == "2":
+        print("Hopefully the lanterns continue lighting your way.")
+        print("You're taking a risk, but also avoiding potential")
+        print("injury. With that decided, you continue down the hall.")
+        stage_3()
+    else:
+        print("You close your eyes and fall asleep.\n")
+        print("The game is over. You will never know what could have been.")
+        print("Want to start again? Please type yes or no")
+        user_ans = input("")
+        if user_ans == "Yes" or user_ans == "yes":
+            start_game()
+        elif user_ans == "No" or user_ans == "no":
+            print("GAME OVER. THANK YOU FOR PLAYING.")
+        else:
+            print("Please type either yes/Yes or no/No")
+
+
+# Stat roll failure event for scene 2.
 
 
 def stage_3():
