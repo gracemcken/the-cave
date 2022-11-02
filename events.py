@@ -236,6 +236,8 @@ def decision_two(answer2):
             print("off in your hand intact and still lit.\n")
             print("Congratulations! You now have a portable light")
             print("source! This will surely be useful!")
+            worksheet_to_update = SHEET.worksheet("inventory")
+            worksheet_to_update.update_cell(3, 1, "lantern")
             stage_2()
         else:
             fail_three()
