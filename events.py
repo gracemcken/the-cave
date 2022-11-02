@@ -260,6 +260,36 @@ def decision_two(answer2):
 # Stat roll failure event for scene 2.
 
 
+def fail_three():
+    """
+    Function that decides what happens
+    should the player fail the only option
+    in scene 2.
+    """
+    stat.update_hp(10)
+    print("The lantern is wedged into the wall much")
+    print("deeper than you expected. You put all your")
+    print("strength into it and pull but unfortunately")
+    print("one of your hands slips and crushes the glass")
+    print("inside the lantern. Shards of glass and hot")
+    print("candle wax cover your hand, burning and cutting it.\n")
+    print("You lose 10 health points.\n")
+    print("Do you...?\n")
+    print("1. Admit defeat due to your injured hand and continue")
+    print("down the hall, relying on the wall light sources\n")
+    print("2. Close your eyes again and wish for this game to end.\n")
+    while True:
+        answer2 = input("")
+        answers = ["1", "2"]
+        if answer2 in answers:
+            print(f"You have chosen option {answer2}.")
+            stage_3()
+        else:
+            print("Please type either '1' or '2'")
+            continue
+        return answer2
+
+
 def stage_3():
     """
     Scene 3 of the story and next decision.
