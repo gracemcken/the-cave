@@ -70,6 +70,17 @@ def roll_luck():
     return final_luck
 
 
+def roll_strength():
+    """
+    Gets player's strength and rolls extra score.
+    """
+    worksheet_to_pull = SHEET.worksheet("character")
+    strength = worksheet_to_pull.acell("H2").value
+    dice_roll = random.randint(0, 15)
+    final_strength = int(strength) + dice_roll
+    return final_strength
+
+
 # Alter player stat functions.
 
 
