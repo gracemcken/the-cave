@@ -235,7 +235,9 @@ def decision_two(answer2):
             print("its place in the wall and the lantern comes")
             print("off in your hand intact and still lit.\n")
             print("Congratulations! You now have a portable light")
-            print("source! This will surely be useful!")
+            print("source! This will surely be useful!\n")
+            print("With your new light in hand, you continue down")
+            print("the hall.")
             worksheet_to_update = SHEET.worksheet("inventory")
             worksheet_to_update.update_cell(3, 1, "lantern")
             stage_3()
@@ -296,7 +298,29 @@ def stage_3():
     """
     Scene 3 of the story and next decision.
     """
-    print("Scene 3")
+    print("As you reach the end of the hallway, you come across a skeleton")
+    print("propped up against the wall. Cobwebs cover his eye sockets, so")
+    print("who knows how long he has been there. He seems to be dressed in")
+    print("pieces of iron armour over his tattered cloth clothes. The pieces")
+    print("of armour seem to be simply secured by straps, so it would be possible")
+    print("for you to remove them and place them on yourself for protection. While")
+    print("slightly rusty, they would still stop an arrow. It's possible that he")
+    print("may have a weapon on him judging by his state of dress, but you would")
+    print("have to move him to search better.\n")
+    print("Do you...?\n")
+    print("1. Remove his armour and strap it to yourself for protection.\n")
+    print("2. Search him for a weapon.\n")
+    print("3. Close your eyes again and wish for this game to end.\n")
+    print("Please choose a option number\n")
+    while True:
+        answer3 = input("")
+        answers = ["1", "2", "3"]
+        if answer3 in answers:
+            print(f"You have chosen option {answer3}.")
+        else:
+            print("Please type either '1', '2', or '3'.")
+            continue
+        return answer3
 
 
 def stage_4():
