@@ -24,7 +24,8 @@ SHEET = GSPREAD_CLIENT.open("the_cave")
 
 def start_game():
     """
-    Begins game, collecting information such as player name, class, race and preferred weapons.
+    Begins game, collecting information such as player name, class, race and
+    preferred weapons.
     """
     stat.default_player_stats()
     stat.default_player_inventory()
