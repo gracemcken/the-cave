@@ -449,16 +449,16 @@ def preferred(weapon):
     and alters stats accordingly. Preferred weapon gets
     +15 attack, non preferred gets +5.
     """
-    worksheet_to_pull = SHEET.get_worksheet("inventory")
+    worksheet_to_pull = SHEET.worksheet("inventory")
     current_weapon = worksheet_to_pull.acell("B2").value
-    if (current_weapon) == (weapon):
+    if current_weapon == weapon:
         worksheet_to_access = SHEET.worksheet("character")
         attack = worksheet_to_access.acell("I2").value
         final_attack = int(attack) + int(15)
         worksheet_to_access.update_cell(2, 9, int(final_attack))
         print(f"Luckily you are skilled with a {current_weapon}!")
         print("This bodes well for any future fights.")
-    elif (current_weapon) != (weapon):
+    elif current_weapon != weapon:
         worksheet_to_access = SHEET.worksheet("character")
         attack = worksheet_to_access.acell("I2").value
         final_attack = int(attack) + int(5)
