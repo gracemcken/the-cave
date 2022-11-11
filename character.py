@@ -47,14 +47,24 @@ def get_race():
     Player chooses their race, each different option
     add different statistics to the player's core scores
     """
+    human = """
+    Human: Adaptable and ambitious, humans are the jack of all trades when it
+    comes to races.
+    """
+    elf = """
+    Elf: Known for their beauty and grace, elves excel at acrobatics and
+    swiftness.
+    """
+    dwarf = """
+    Dwarf: Solid and stout, dwarves are as stubborn as they are strong.
+    """
+    error = """
+    Please type one of the races listed and ensure there is a capital letter.
+    """
     print("Tell me, what race are you?\n")
-    print(
-        "Human: Adaptable and ambitious, humans are the jack of all trades when it comes to races."
-    )
-    print(
-        "Elf: Known for their beauty and grace, elves excel at acrobatics and swiftness."
-    )
-    print("Dwarf: Solid and stout, dwarves are as stubborn as they are strong.\n")
+    print(human)
+    print(elf)
+    print(dwarf)
     while True:
         race = input("My race is: ")
         races = ["Human", "human", "Dwarf", "dwarf", "Elf", "elf"]
@@ -63,9 +73,8 @@ def get_race():
             print("to be seen here in a long, long time.")
             break
         else:
-            print(
-                "Please type one of the races listed and ensure there is a capital letter."
-            )
+            print(error)
+
             continue
     return race
 
@@ -83,15 +92,27 @@ def get_class():
     Player chooses their class, each different option add
     different statistics to the player's core scores
     """
-    print("You seem fairly capable of handling yourself. In which area do")
-    print("your expertise lie?\n")
-    print("Warrior: Strong and formidable, well versed in the art of melee combat.")
-    print("Ranger: A hunter, their work depends of their stealth and instincts")
-    print("Mage: Intelligent and shrewd;")
-    print("as long as they have something to channel it, they can control magic.\n")
+    question = """
+    You seem fairly capable of handling yourself. In which area do your
+    expertise lie?
+    """
+    warrior = """
+    Warrior: Strong and formidable, well versed in the art of melee combat.
+    """
+    ranger = """
+    Ranger: A hunter, their work depends of their stealth and instincts
+    """
+    mage = """
+    Mage: Intelligent and shrewd; as long as they have something to channel it,
+    they can control magic.
+    """
+    print(question)
+    print(warrior)
+    print(ranger)
+    print(mage)
+    player_classes = ["warrior", "ranger", "mage", "Warrior", "Ranger", "Mage"]
     while True:
         player_class = input("My class is: ")
-        player_classes = ["warrior", "ranger", "mage", "Warrior", "Ranger", "Mage"]
         if player_class in player_classes:
             print(f"Ah, a {player_class}.")
             break
@@ -113,8 +134,11 @@ def preferred_weapon(player_class):
     """
     Player chooses their preferred weapon, each class has different options.
     """
-    print("I'm sure you're strong in a fight, but if you had to choose,")
-    print("which weapon would be your preference?\n")
+    question = """
+    I'm sure you're strong in a fight, but if you had to choose, which weapon
+    would be your preference?
+    """
+    print(question)
     if player_class == "warrior" or player_class == "Warrior":
         print("Sword")
         print("or")
