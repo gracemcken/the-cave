@@ -1,10 +1,11 @@
 import random
+
 import gspread
 from google.oauth2.service_account import Credentials
+
 import stats as stat
 import variables
 from run import start_game
-
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -338,7 +339,7 @@ def stage_3():
 
 def decision_3_a(player_class):
     """
-    What happens should the player choose to select the armour.
+    What happens should the player choose to select the weapon.
     """
     print("You shove the skeleton over to check underneath him for")
     print("a weapon. Unfortunately the he is heavier than he looks")
@@ -373,6 +374,10 @@ def decision_3_b():
     Outcome of the decision to remove the skeleton's armour. Offers
     choice of trying to find a weapon too.
     """
+    worksheet_to_access = SHEET.worksheet("character")
+    defense = worksheet_to_access.acell("J2").value
+    final_defense = int(defense) + int(10)
+    worksheet_to_access.update_cell(2, 10, int(final_defense))
     print("While the armour isn't in the best shape")
     print("it will protect you more than the ragged")
     print("clothing you're currently wearing. As you remove")
