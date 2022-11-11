@@ -20,7 +20,8 @@ SHEET = GSPREAD_CLIENT.open("the_cave")
 
 def default_player_stats():
     """
-    Places default player stats into google sheet before any modifications can be made or buffs.
+    Places default player stats into google sheet before any modifications can
+    be made or buffs.
     """
     worksheet_to_update = SHEET.worksheet("character")
     # character's default health points
