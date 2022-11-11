@@ -104,6 +104,7 @@ Large gap between line breaks instead of starting on new line | Resolved | Inste
 Health points were not being updated after player suffers HP loss | Resolved | I had forgotten to add .value to the statement. | ![hp-bug](readme_docs/bug_screenshots/hp_bug.png)
 Using if statements in main file caused the failure function to trigger and prevented HP from updating | Resolved | Placed update hp function in events.py in failure function | ![placement-bug](readme_docs/bug_screenshots/placement_bug.png)
 Dagger would not upload to sheet and caused UnboundLocalError | Resolved | I only assigned the worksheet variable in one of the if statements rather than all of them. I fixed this by adding it to each if statement | ![var_bug](readme_docs/bug_screenshots/var_bug.png)
+Couldn't reach worksheet | Resolved | I accidentally mixed up functions and added "get_" before worksheet in my code | ![worksheet-bug](readme_docs/bug_screenshots/worksheet_bug.png)
 ## Known Issues
 
 
