@@ -1,8 +1,8 @@
-import os
-
+import random
 import gspread
 from google.oauth2.service_account import Credentials
 import stats as stat
+import variables
 from run import start_game
 
 
@@ -294,6 +294,11 @@ def fail_three():
         return answer2
 
 
+# END OF SCENE 2 EVENTS
+
+# SCENE 3 POTENTIAL EVENTS
+
+
 def stage_3():
     """
     Scene 3 of the story and next decision.
@@ -320,7 +325,35 @@ def stage_3():
         else:
             print("Please type either '1', '2', or '3'.")
             continue
-        return answer3
+        if answer3 == "1":
+            decision_3_a(variables.player_class)
+
+
+def decision_3_a(player_class):
+    """
+    What happens should the player choose to select the armour.
+    """
+    print("You shove the skeleton over to check underneath him for")
+    print("a weapon. Unfortunately the he is heavier than he looks")
+    print("and the weight of his armour and bones causes the straps")
+    print("of his armour to snap. While that now may be unusable,")
+    print("you've thankfully found a weapon.")
+    if player_class == "warrior" or player_class == "Warrior":
+        weapons = ["sword", "axe"]
+        random_weapon = random.choice(weapons)
+        print("You have found a (random_weapon)!")
+        worksheet_to_update = SHEET.worksheet("inventory")
+        worksheet_to_update.update_cell(2, 2, {random_weapon})
+    elif player_class == "ranger" or player_class == "Ranger":
+        weapons = ["dagger", "bow"]
+        random_weapon = random.choice(weapons)
+        print("You have found a (random_weapon)!")
+        worksheet_to_update.update_cell(2, 2, {random_weapon})
+    else:
+        weapons = ["staff", "spell tome"]
+        random_weapon = random.choice(weapons)
+        print("You have found a (random_weapon)!")
+        worksheet_to_update.update_cell(2, 2, {random_weapon})
 
 
 def stage_4():
