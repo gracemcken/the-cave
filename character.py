@@ -13,12 +13,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("the_cave")
 
-# Make player stat variables global across files and functions
-
-global race
-global player_class
-global weapon
-
 
 # Game set up functions. Each run at the beginning of the game.
 
