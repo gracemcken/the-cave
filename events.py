@@ -298,6 +298,8 @@ def fail_three():
 
 # SCENE 3 POTENTIAL EVENTS
 
+# Main event
+
 
 def stage_3():
     """
@@ -327,6 +329,11 @@ def stage_3():
             continue
         if answer3 == "1":
             decision_3_a(variables.player_class)
+        if answer3 == "2":
+            decision_3_b()
+
+
+# Decision events
 
 
 def decision_3_a(player_class):
@@ -356,6 +363,80 @@ def decision_3_a(player_class):
         print(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
+
+
+def decision_3_b():
+    """
+    Outcome of the decision to remove the skeleton's armour. Offers
+    choice of trying to find a weapon too.
+    """
+    print("While the armour isn't in the best shape")
+    print("it will protect you more than the ragged")
+    print("clothing you're currently wearing. As you remove")
+    print("the armour from the skeleton, it collapses in a")
+    print("heap on the floor. Unfortunately any chance of")
+    print("finding a weapon is now slim. Would you like to")
+    print("try anyway?\n")
+    print("1. Yes.\n")
+    print("2. No, move on.\n")
+    print("3. Close your eyes again and wish for this game to end.\n")
+    while True:
+        answer4 = input("")
+        answers = ["1", "2", "3"]
+        if answer4 in answers:
+            print(f"You have chosen option {answer4}.")
+        else:
+            print("Please type either '1', '2', or '3'.")
+            continue
+        if answer4 == "1":
+            luck = stat.roll_luck()
+            if luck >= 30:
+                wildcard(variables.player_class)
+            else:
+                print("You move the pile of rubble that was once")
+                print("the skeleton but fail to find anything of use.")
+                print("At least you have some armour now.")
+        elif answer4 == "2":
+            stage_4()
+        else:
+            print("You close your eyes and fall asleep.\n")
+            print("The game is over. You will never know what could have been.")
+            print("Want to start again? Please type yes or no")
+            user_ans = input("")
+            if user_ans == "Yes" or user_ans == "yes":
+                start_game()
+            elif user_ans == "No" or user_ans == "no":
+                print("GAME OVER. THANK YOU FOR PLAYING.")
+            else:
+                print("Please type either yes/Yes or no/No")
+
+
+def wildcard(player_class):
+    """
+    Function that plays if the player successfully rolls a high
+    enough luck score to get a weapon as well as armour.
+    """
+    if player_class == "warrior" or player_class == "Warrior":
+        weapons = ["sword", "axe"]
+        random_weapon = random.choice(weapons)
+        print(f"You have found a {random_weapon}!")
+        worksheet_to_update = SHEET.worksheet("inventory")
+        worksheet_to_update.update_cell(2, 2, random_weapon)
+        preferred()
+    elif player_class == "ranger" or player_class == "Ranger":
+        weapons = ["dagger", "bow"]
+        random_weapon = random.choice(weapons)
+        print(f"You have found a {random_weapon}!")
+        worksheet_to_update = SHEET.worksheet("inventory")
+        worksheet_to_update.update_cell(2, 2, random_weapon)
+        preferred()
+    else:
+        weapons = ["staff", "spell tome"]
+        random_weapon = random.choice(weapons)
+        print(f"You have found a {random_weapon}!")
+        worksheet_to_update = SHEET.worksheet("inventory")
+        worksheet_to_update.update_cell(2, 2, random_weapon)
+        preferred()
 
 
 def stage_4():
