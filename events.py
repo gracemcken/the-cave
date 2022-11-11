@@ -313,8 +313,8 @@ def stage_3():
     print("may have a weapon on him judging by his state of dress, but you would")
     print("have to move him to search better.\n")
     print("Do you...?\n")
-    print("1. Remove his armour and strap it to yourself for protection.\n")
-    print("2. Search him for a weapon.\n")
+    print("1. Search him for a weapon.\n")
+    print("2. Remove his armour and strap it to yourself for protection.\n")
     print("3. Close your eyes again and wish for this game to end.\n")
     print("Please choose a option number\n")
     while True:
