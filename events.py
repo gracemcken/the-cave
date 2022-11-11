@@ -351,18 +351,21 @@ def decision_3_a(player_class):
         print(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
+        preferred(variables.weapon)
     elif player_class == "ranger" or player_class == "Ranger":
         weapons = ["dagger", "bow"]
         random_weapon = random.choice(weapons)
         print(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
+        preferred(variables.weapon)
     else:
         weapons = ["staff", "spell tome"]
         random_weapon = random.choice(weapons)
         print(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
+        preferred(variables.weapon)
 
 
 def decision_3_b():
@@ -422,21 +425,49 @@ def wildcard(player_class):
         print(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
-        preferred()
+        preferred(variables.weapon)
     elif player_class == "ranger" or player_class == "Ranger":
         weapons = ["dagger", "bow"]
         random_weapon = random.choice(weapons)
         print(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
-        preferred()
+        preferred(variables.weapon)
     else:
         weapons = ["staff", "spell tome"]
         random_weapon = random.choice(weapons)
         print(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
-        preferred()
+        preferred(variables.weapon)
+
+
+def preferred(weapon):
+    """
+    Function triggered if user obtains weapon. Checks
+    to see if the weapon matches their preferred weapon
+    and alters stats accordingly. Preferred weapon gets
+    +15 attack, non preferred gets +5.
+    """
+    worksheet_to_pull = SHEET.get_worksheet("inventory")
+    current_weapon = worksheet_to_pull.acell("B2").value
+    if (current_weapon) == (weapon):
+        worksheet_to_access = SHEET.worksheet("character")
+        attack = worksheet_to_access.acell("I2").value
+        final_attack = int(attack) + int(15)
+        worksheet_to_access.update_cell(2, 9, int(final_attack))
+        print(f"Luckily you are skilled with a {current_weapon}!")
+        print("This bodes well for any future fights.")
+    elif (current_weapon) != (weapon):
+        worksheet_to_access = SHEET.worksheet("character")
+        attack = worksheet_to_access.acell("I2").value
+        final_attack = int(attack) + int(5)
+        worksheet_to_access.update_cell(2, 9, int(final_attack))
+        print("It may not be a weapon you're used to")
+        print("but you will still do better in a fight")
+        print("than if you were without it.")
+    else:
+        print("Game error.")
 
 
 def stage_4():
