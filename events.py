@@ -341,19 +341,21 @@ def decision_3_a(player_class):
     if player_class == "warrior" or player_class == "Warrior":
         weapons = ["sword", "axe"]
         random_weapon = random.choice(weapons)
-        print("You have found a (random_weapon)!")
+        print(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
-        worksheet_to_update.update_cell(2, 2, {random_weapon})
+        worksheet_to_update.update_cell(2, 2, random_weapon)
     elif player_class == "ranger" or player_class == "Ranger":
         weapons = ["dagger", "bow"]
         random_weapon = random.choice(weapons)
-        print("You have found a (random_weapon)!")
-        worksheet_to_update.update_cell(2, 2, {random_weapon})
+        print(f"You have found a {random_weapon}!")
+        worksheet_to_update = SHEET.worksheet("inventory")
+        worksheet_to_update.update_cell(2, 2, random_weapon)
     else:
         weapons = ["staff", "spell tome"]
         random_weapon = random.choice(weapons)
-        print("You have found a (random_weapon)!")
-        worksheet_to_update.update_cell(2, 2, {random_weapon})
+        print(f"You have found a {random_weapon}!")
+        worksheet_to_update = SHEET.worksheet("inventory")
+        worksheet_to_update.update_cell(2, 2, random_weapon)
 
 
 def stage_4():
