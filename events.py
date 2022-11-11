@@ -404,6 +404,7 @@ def decision_3_b():
                 print("You move the pile of rubble that was once")
                 print("the skeleton but fail to find anything of use.")
                 print("At least you have some armour now.")
+                stage_4()
         elif answer4 == "2":
             stage_4()
         else:
@@ -431,6 +432,7 @@ def wildcard(player_class):
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
         preferred(variables.weapon)
+        stage_4()
     elif player_class == "ranger" or player_class == "Ranger":
         weapons = ["dagger", "bow"]
         random_weapon = random.choice(weapons)
@@ -438,6 +440,7 @@ def wildcard(player_class):
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
         preferred(variables.weapon)
+        stage_4()
     else:
         weapons = ["staff", "spell tome"]
         random_weapon = random.choice(weapons)
@@ -445,6 +448,7 @@ def wildcard(player_class):
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
         preferred(variables.weapon)
+        stage_4()
 
 
 def preferred(weapon):
@@ -463,6 +467,7 @@ def preferred(weapon):
         worksheet_to_access.update_cell(2, 9, int(final_attack))
         print(f"Luckily you are skilled with a {current_weapon}!")
         print("This bodes well for any future fights.")
+        stage_4()
     elif current_weapon != weapon:
         worksheet_to_access = SHEET.worksheet("character")
         attack = worksheet_to_access.acell("I2").value
@@ -471,6 +476,7 @@ def preferred(weapon):
         print("It may not be a weapon you're used to")
         print("but you will still do better in a fight")
         print("than if you were without it.")
+        stage_4()
     else:
         print("Game error.")
 
