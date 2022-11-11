@@ -57,6 +57,22 @@ def wake_up():
         return answer1
 
 
+def exit_game():
+    exit = """
+    You close your eyes and fall asleep.
+    The game is over. You will never know what could have been.
+    Want to start again? Please type yes or no.
+    """
+    print(exit)
+    user_ans = input("")
+    if user_ans == "Yes" or user_ans == "yes":
+        start_game()
+    elif user_ans == "No" or user_ans == "no":
+        print("GAME OVER. THANK YOU FOR PLAYING.")
+    else:
+        print("Please type either yes/Yes or no/No")
+
+
 def decision_one(answer1):
     """
     Generates outcome of first decision in game
@@ -80,16 +96,7 @@ def decision_one(answer1):
         else:
             fail_two()
     else:
-        print("You close your eyes and fall asleep.\n")
-        print("The game is over. You will never know what could have been.")
-        print("Want to start again? Please type yes or no")
-        user_ans = input("")
-        if user_ans == "Yes" or user_ans == "yes":
-            start_game()
-        elif user_ans == "No" or user_ans == "no":
-            print("GAME OVER. THANK YOU FOR PLAYING.")
-        else:
-            print("Please type either yes/Yes or no/No")
+        exit_game()
 
 
 # Stat roll failure events below:
