@@ -4,6 +4,7 @@ from google.oauth2.service_account import Credentials
 import character
 import stats as stat
 import events as event
+import variables
 
 
 SCOPE = [
@@ -27,16 +28,12 @@ def start_game():
     """
     stat.default_player_stats()
     stat.default_player_inventory()
-    name = character.get_name()
-    race = character.get_race()
-    player_class = character.get_class()
-    weapon = character.preferred_weapon(player_class)
-    character.add_name(name)
-    character.add_race(race)
-    character.add_player_class(player_class)
-    character.add_preferred_weapon(weapon)
-    character.add_race_modifiers(race)
-    character.add_class_modifiers(player_class)
+    character.add_name(variables.name)
+    character.add_race(variables.race)
+    character.add_player_class(variables.player_class)
+    character.add_preferred_weapon(variables.weapon)
+    character.add_race_modifiers(variables.race)
+    character.add_class_modifiers(variables.player_class)
     os.system("clear")
     answer1 = event.wake_up()
     os.system("clear")
