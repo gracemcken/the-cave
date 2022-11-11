@@ -25,19 +25,23 @@ def wake_up():
     """
     Introduction for player, section 1 of the story.
     """
-    print("You wake up in a cold, damp cave...\n")
-    print("You can't remember the last thing that happened to you but here you are; \n")
-    print("Shivering... \n Confused... \n Lost...\n")
-    print(
-        "In the distance you can see a faint glow of light several metres ahead of you."
-    )
-    print("Do you...?")
-    print(
-        "1. Stand up and head directly towards the light,\n"
-        "despite being unable to see your surroundings.\n"
-    )
-    print("2. Feel around the area for any item that could be of use to you.\n")
-    print("3. Close your eyes again and wish for this game to end.\n")
+    intro = """
+    You wake up in a cold, damp cave...
+    You can't remember the last thing that happened to you, but here you are;
+    Shivering...
+    Confused...
+    Lost...
+    In the distance you can see a faint glow of light ahead of you.
+    """
+    question = """
+    Do you...?
+    1. Stand up and head directly towards the light despite being unable to
+    see your surroundings?
+    2. Feel around the area for any item that could be of use to you?
+    3. Close your eyes again and wish for this game to end.
+    """
+    print(intro)
+    print(question)
     print("Please choose a option number\n")
     while True:
         answer1 = input("")
@@ -60,10 +64,12 @@ def decision_one(answer1):
     if answer1 == "1":
         dex = stat.roll_dex()
         if dex >= 25:
-            print("Thankfully by carefully walking slowly,")
-            print("you manage to make your way towards the light")
-            print("without incident. You can now see your")
-            print("surroundings a little better.")
+            success = """
+            Thankfully by carefully walking slowly, you manage to make your way
+            towards the light without incident. You can now see your
+            surroundings a little better.
+            """
+            print(success)
             stage_2()
         else:
             fail_one()
@@ -481,11 +487,21 @@ def preferred(weapon):
         print("Game error.")
 
 
+# Main event
+
+
 def stage_4():
     """
     Scene 4 of the story and next decision.
     """
-    print("Scene 4")
+    print("As you continue through the hallway, the")
+    print("lanterns get fewer and fewer, and with them")
+    print("the light gets dimmer and dimmer.")
+    worksheet_to_pull = SHEET.worksheet("inventory")
+    inventory = worksheet_to_pull.col_values(1)
+    if ("torch" or "lantern") in inventory:
+        print("Thankfully you have your portable light source still and can still")
+        print("see fairly clear through the darkness.")
 
 
 def stage_5():
