@@ -25,7 +25,8 @@ def wake_up():
     """
     Introduction for player, section 1 of the story.
     """
-    intro = """
+    print(
+        """
     You wake up in a cold, damp cave...
     You can't remember the last thing that happened to you, but here you are;
     Shivering...
@@ -33,15 +34,17 @@ def wake_up():
     Lost...
     In the distance you can see a faint glow of light ahead of you.
     """
-    question = """
+    )
+    print(
+        """
     Do you...?
     1. Stand up and head directly towards the light despite being unable to
     see your surroundings?
     2. Feel around the area for any item that could be of use to you?
     3. Close your eyes again and wish for this game to end.
     """
-    print(intro)
-    print(question)
+    )
+
     print("Please choose a option number\n")
     while True:
         answer1 = input("")
@@ -80,12 +83,13 @@ def decision_one(answer1):
     if answer1 == "1":
         dex = stat.roll_dex()
         if dex >= 25:
-            success = """
+            print(
+                """
             Thankfully by carefully walking slowly, you manage to make your way
             towards the light without incident. You can now see your
             surroundings a little better.
             """
-            print(success)
+            )
             stage_2()
         else:
             fail_one()
@@ -109,20 +113,23 @@ def fail_one():
     in the first choice.
     """
     stat.update_hp(5)
-    fail = """
+    print(
+        """
     Bang! You trip over something and land on your hands and knees. It's
     painful and although you can't see it, you can feel blood trickle down the
     palms of your hands.
     You lose 5 health points.
     """
-    question = """
+    )
+    print(
+        """
     Do you...?
     1. Stand up and continue towards the light.
     2. Feel around the area for any item that could be of use to you.
     3. Close your eyes again and wish for this game to end.
     """
-    print(fail)
-    print(question)
+    )
+
     while True:
         answer1 = input("")
         answers = ["1", "2", "3"]
@@ -145,21 +152,24 @@ def fail_two():
     of the first choice.
     """
     stat.update_hp(5)
-    fail = """
+    print(
+        """
     As you feel around, your hands meet the rough edge of the stone wall.
     'Success!' you think. Surely you can use this as a way to safely navigate
     to the exit. Instead, you cut open your hand on a sharp bit of rock jutting
     out from the wall.
     You lose 5 health points.
     """
-    question = """
+    )
+    print(
+        """
     Do you...?
     1. Stand up and continue towards the light.
     2. Continue feeling around the area.
     3. Close your eyes again and wish for this game to end.
     """
-    print(fail)
-    print(question)
+    )
+
     while True:
         answer1 = input("")
         answers = ["1", "2", "3"]
@@ -185,7 +195,8 @@ def find_item_one():
     Text that runs if the player successfully passes the luck check. Results in
     torch and rusted key being added to inventory.
     """
-    success = """
+    print(
+        """
     Success! You're not sure if it's just luck or someone is looking out for
     you, but as your hands feel around the floor in front of you, you come into
     contact with what feels like a satchel. Inside you find what you can assume
@@ -196,7 +207,7 @@ def find_item_one():
     With your new items in your inventory, you set off safely towards the
     light.
     """
-    print(success)
+    )
 
     worksheet_to_update = SHEET.worksheet("inventory")
     worksheet_to_update.update_cell(1, 1, "torch")
@@ -214,25 +225,29 @@ def stage_2():
     """
     Scene 2 of the story and next decision.
     """
-    body = """
+    print(
+        """
     The source of the light is a iron lantern fixed to the wall.
     The cave seems to be starting to form into a carved out hallway with more
     lanterns lining the pathway down.
     """
-    print(body)
+    )
+
     worksheet_to_pull = SHEET.worksheet("inventory")
     inventory = worksheet_to_pull.col_values(1)
     if "torch" in inventory:
-        torch = """
+        print(
+            """
         You already have a light source thankfully, but the lanterns provide an
         extra bit of light for you. You continue down the corridor, following
         the more structured pathway.
         """
-        print(torch)
+        )
 
         stage_3()
     else:
-        otherwise = """
+        print(
+            """
         While the lanterns seem to continue down the hallway, you have no idea
         whether further along the path is lit.
         Do you...?
@@ -241,7 +256,8 @@ def stage_2():
         3. Close your eyes again and wish for this game to end.
         Please choose a option number
         """
-        print(otherwise)
+        )
+
         while True:
             answer2 = input("")
             answers = ["1", "2", "3"]
@@ -264,7 +280,8 @@ def decision_two(answer2):
     if answer2 == "1":
         strength = stat.roll_strength()
         if strength >= 25:
-            success = """
+            print(
+                """
             With all of your strength, you attempt to pull the lantern from
             the wall without smashing the glass and burning your hand.
             You hear a clunk as the metal detaches from its place in the wall
@@ -273,7 +290,7 @@ def decision_two(answer2):
             surely be useful!
             With your new light in hand, you continue down the hall.
             """
-            print(success)
+            )
 
             worksheet_to_update = SHEET.worksheet("inventory")
             worksheet_to_update.update_cell(3, 1, "lantern")
@@ -281,12 +298,14 @@ def decision_two(answer2):
         else:
             fail_three()
     elif answer2 == "2":
-        two = """
+        print(
+            """
         Hopefully the lanterns continue lighting your way. You're taking a risk
         but also avoiding potential injury. With that decided, you continue
         down the hall.
         """
-        print(two)
+        )
+
         stage_3()
     else:
         exit_game()
@@ -302,21 +321,23 @@ def fail_three():
     in scene 2.
     """
     stat.update_hp(10)
-    fail = """
+    print(
+        """
     The lantern is wedged into the wall much deeper than you expected. You put
     all your strength into it and pull but unfortunately one of your hands
     slips and crushes the glass inside the lantern. Shards of glass and hot
     candle wax cover your hand, burning and cutting it.
     You lose 10 health points.
     """
-    question = """
+    )
+    print(
+        """
     Do you...?
     1. Admit defeat due to your injured hand and continue down the hall,
     relying on the wall light sources?
     2. Close your eyes again and wish for this game to end.
     """
-    print(fail)
-    print(question)
+    )
 
     while True:
         answer2 = input("")
@@ -344,7 +365,8 @@ def stage_3():
     """
     Scene 3 of the story and next decision.
     """
-    body = """
+    print(
+        """
     As you reach the end of the hallway, you come across a skeleton propped up
     against the wall. Cobwebs cover his eye sockets, so who knows how long he
     has been there. He seems to be dressed in pieces of iron armour over his
@@ -354,15 +376,17 @@ def stage_3():
     arrow. It's possible that he may also have a weapon on him judging by his
     state of dress, but you would have to move him to search better.
     """
-    question = """
+    )
+    print(
+        """
     Do you...?
     1. Search him for a weapon.
     2. Remove his armour and strap it to yourself for protection.
     3. Close your eyes again and wish for this game to end.
     Please choose a option number.
     """
-    print(body)
-    print(question)
+    )
+
     while True:
         answer3 = input("")
         answers = ["1", "2", "3"]
@@ -386,14 +410,14 @@ def decision_3_a(player_class):
     """
     What happens should the player choose to select the weapon.
     """
-    body = """
+    print(
+        """
     You shove the skeleton over to check underneath him for a weapon.
     Unfortunately the he is heavier than he looks and the weight of his armour
     and bones causes the straps of his armour to snap. While that now may be
     unusable, you've thankfully found a weapon.
     """
-    print(body)
-
+    )
     if player_class == "warrior" or player_class == "Warrior":
         weapons = ["sword", "axe"]
         random_weapon = random.choice(weapons)
@@ -426,25 +450,23 @@ def decision_3_b():
     defense = worksheet_to_access.acell("J2").value
     final_defense = int(defense) + int(10)
     worksheet_to_access.update_cell(2, 10, int(final_defense))
-    body = """
+    print(
+        """
     While the armour isn't in the best shape it will protect you more than the
     ragged clothing you're currently wearing. As you remove the armour from
     the skeleton, it collapses in a heap on the floor. Unfortunately any
     chance of finding a weapon is now slim.
     """
-    question = """
+    )
+    print(
+        """
     Would you like to try anyway?
     1. Yes.
     2. No, move on.
     3. Close your eyes again and wish for this game to end.
     """
-    fail = """
-    You move the pile of rubble that was once the skeleton but fail to find
-    anything of use.
-    At least you have some armour now.
-    """
-    print(body)
-    print(question)
+    )
+
     while True:
         answer4 = input("")
         answers = ["1", "2", "3"]
@@ -458,7 +480,13 @@ def decision_3_b():
             if luck >= 30:
                 wildcard(variables.player_class)
             else:
-                print(fail)
+                print(
+                    """
+    You move the pile of rubble that was once the skeleton but fail to find
+    anything of use.
+    At least you have some armour now.
+    """
+                )
                 stage_4()
         elif answer4 == "2":
             stage_4()
@@ -519,9 +547,12 @@ def preferred(weapon):
         attack = worksheet_to_access.acell("I2").value
         final_attack = int(attack) + int(5)
         worksheet_to_access.update_cell(2, 9, int(final_attack))
-        print("It may not be a weapon you're used to")
-        print("but you will still do better in a fight")
-        print("than if you were without it.")
+        print(
+            """
+        It may not be a weapon you're used to but you will still do better in
+        a fight than if you were without it.
+        """
+        )
         stage_4()
     else:
         print("Game error.")
@@ -534,19 +565,26 @@ def stage_4():
     """
     Scene 4 of the story and next decision.
     """
-    body = """
+    print(
+        """
     As you continue through the hallway, the lanterns get fewer and fewer, and
     with them the light gets dimmer and dimmer.
     """
+    )
     light = """
     Thankfully you have your portable light source still and can still see
     fairly clear through the darkness.
     """
-    print(body)
+
     worksheet_to_pull = SHEET.worksheet("inventory")
     inventory = worksheet_to_pull.col_values(1)
     if ("torch" or "lantern") in inventory:
-        print(light)
+        print(
+            """
+    Thankfully you have your portable light source still and can still see
+    fairly clear through the darkness.
+    """
+        )
 
 
 def stage_5():
