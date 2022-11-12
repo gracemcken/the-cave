@@ -580,6 +580,10 @@ def stage_4():
 
 
 def attack_him():
+    """
+    Function triggered if player has a light source. Allows them to attack or
+    try sneak past the enemy.
+    """
     print(
         """
     Thankfully you have your portable light source still and can see
@@ -645,6 +649,47 @@ def attack_him():
             exit_game()
 
 
+def noise():
+    """
+    Triggered if player has no light source and does not see the enemy. Rolls
+    dex & luck, if successful player lives, if not, player dies.
+    """
+    print(
+        """
+        As you come around a corner, you hear a noise. It's a strange creaking
+        sound, like teeth grinding against each other. You freeze as you try
+        to figure out what next to do. Before you can even taken another
+        breath, you hear the sound of metal whirling through the air towards
+        you.
+        """
+    )
+    dex = stat.roll_dex()
+    luck = stat.roll_luck()
+    survival = int(dex) + int(luck)
+    if survival >= 60:
+        print(
+            """
+            Someone was looking out for you today. Although you can't even see
+            what you're dodging, you manage to move out of the way of the
+            weapon that was hurtling towards you and you hear it embed it's
+            blade into the dirt ground. You almost trip in the dark but find
+            your footing when your shoulder collides with a wall. Not sure
+            where the enemy is, you have no choice but to run forward in
+            the dark. There is more light ahead and your enemy seems
+            preoccupied attempting to dislodge his weapon from the ground.
+            Somehow, you make it.
+            """
+        )
+    else:
+        print(
+            """
+            Your enemy strikes you. The last thing you see as you fall to the
+            ground is the skeleton's glowing red eyes.
+            """
+        )
+        dead()
+
+
 def stage_5():
     """
     Scene 5 of the story and next decision.
@@ -653,13 +698,16 @@ def stage_5():
 
 
 def dead():
+    """
+    Triggered if player is killed by an enemy. Gives option to retry game.
+    """
     print("YOU HAVE DIED. GAME OVER")
     print(
         """
-          Would you like to play again?
-          1. Yes
-          2. No
-          """
+        Would you like to play again?
+        1. Yes
+        2. No
+        """
     )
     answer = input("")
     answers = ["1", "2"]
