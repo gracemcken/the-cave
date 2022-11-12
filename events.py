@@ -571,20 +571,78 @@ def stage_4():
     with them the light gets dimmer and dimmer.
     """
     )
-    light = """
-    Thankfully you have your portable light source still and can still see
-    fairly clear through the darkness.
-    """
-
     worksheet_to_pull = SHEET.worksheet("inventory")
     inventory = worksheet_to_pull.col_values(1)
     if ("torch" or "lantern") in inventory:
-        print(
-            """
-    Thankfully you have your portable light source still and can still see
-    fairly clear through the darkness.
+        attack_him()
+    else:
+        noise()
+
+
+def attack_him():
+    print(
+        """
+    Thankfully you have your portable light source still and can see
+    fairly clearly through the darkness. As you turn a corner, you take a sharp
+    intake of breath and freeze. Just a few feet ahead of you is a very much
+    reanimated skeleton; his bones creaking as they carry him up and down the
+    hallway. You duck back behind the wall corner to decide on what to do next.
     """
-        )
+    )
+    print(
+        """
+            Do you...?
+            1. Attack him preemptively before he notices you?
+            2. Try to sneak past him?
+            3. Close your eyes and wish for the game to end?
+            """
+    )
+    while True:
+        answer5 = input("")
+        answers = ["1", "2", "3"]
+        if answer5 in answers:
+            print(f"You have chosen option {answer5}.")
+        else:
+            print("Please type either '1', '2', or '3'.")
+            continue
+        if answer5 == "1":
+            attack = stat.roll_attack()
+            if attack >= 30:
+                print(
+                    """
+                        You make the decision to attack before you're noticed.
+                        Thankfully, the skeleton remains unaware of your
+                        presence and you strike him down with your weapon.
+                        His bones fall to the floor with a clatter and all
+                        is silent. It's safe to assume he's finished.
+                        You're safe."""
+                )
+            else:
+                dead()
+        elif answer5 == "2":
+            dex = stat.roll_dex()
+            if dex >= 25:
+                print(
+                    """
+                        You extinguish your light and quietly sneak around the
+                        enemy, careful not to make too much noise. You're not
+                        sure if the skeleton can still head without his flesh
+                        ears but you don't want to take that chance.
+                        Thankfully, you make it to the end of what you assume
+                        is a corridor.
+                        """
+                )
+                stage_5()
+            else:
+                print(
+                    """
+                        He sees you and it's too late. The last thing you
+                        see is the glint of his sword coming towards you.
+                        """
+                )
+                dead()
+        else:
+            exit_game()
 
 
 def stage_5():
@@ -592,3 +650,24 @@ def stage_5():
     Scene 5 of the story and next decision.
     """
     print("Scene 5")
+
+
+def dead():
+    print("YOU HAVE DIED. GAME OVER")
+    print(
+        """
+          Would you like to play again?
+          1. Yes
+          2. No
+          """
+    )
+    answer = input("")
+    answers = ["1", "2"]
+    if answer in answers:
+        print(f"You have chosen option {answer}.")
+        if answer == "1":
+            start_game()
+        else:
+            print("Thank you for playing.")
+    else:
+        print("Please type either '1', '2', or '3'.")
