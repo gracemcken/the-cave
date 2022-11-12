@@ -82,6 +82,17 @@ def roll_strength():
     return final_strength
 
 
+def roll_attack():
+    """
+    Gets player's attack and rolls extra score.
+    """
+    worksheet_to_pull = SHEET.worksheet("character")
+    attack = worksheet_to_pull.acell("I2").value
+    dice_roll = random.randint(0, 15)
+    final_attack = int(attack) + dice_roll
+    return final_attack
+
+
 # Alter player stat functions.
 
 
