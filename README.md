@@ -105,6 +105,8 @@ Health points were not being updated after player suffers HP loss | Resolved | I
 Using if statements in main file caused the failure function to trigger and prevented HP from updating | Resolved | Placed update hp function in events.py in failure function | ![placement-bug](readme_docs/bug_screenshots/placement_bug.png)
 Dagger would not upload to sheet and caused UnboundLocalError | Resolved | I only assigned the worksheet variable in one of the if statements rather than all of them. I fixed this by adding it to each if statement | ![var_bug](readme_docs/bug_screenshots/var_bug.png)
 Couldn't reach worksheet | Resolved | I accidentally mixed up functions and added "get_" before worksheet in my code | ![worksheet-bug](readme_docs/bug_screenshots/worksheet_bug.png)
+Start_game() function after player is asked if they want to play again doesn't start at the very beginning, instead at the start of wake_up() | Currently Unresolved | TBF | 
+Preferred weapon function gets confused due to uppercase or lower case entry by player | TBF | Change so player only types in lowercase | ![dagger-bug](readme_docs/bug_screenshots/dagger_bug.png) ![dagger-bug2](readme_docs/bug_screenshots/dagger_bug2.png)
 ## Known Issues
 
 
