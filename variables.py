@@ -15,7 +15,18 @@ SHEET = GSPREAD_CLIENT.open("the_cave")
 
 # Makes these vars global throughout application
 
-name = char_setup.get_name()
-player_class = char_setup.get_class()
-weapon = char_setup.preferred_weapon(player_class)
-race = char_setup.get_race()
+name = ""
+player_class = ""
+weapon = ""
+race = ""
+
+
+def initialize_variables():
+    global name
+    name = char_setup.get_name()
+    global player_class
+    player_class = char_setup.get_class()
+    global weapon
+    weapon = char_setup.preferred_weapon(player_class)
+    global race
+    race = char_setup.get_race()

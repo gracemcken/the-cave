@@ -29,6 +29,7 @@ def start_game():
     """
     stat.default_player_stats()
     stat.default_player_inventory()
+    variables.initialize_variables()
     character.add_name(variables.name)
     character.add_race(variables.race)
     character.add_player_class(variables.player_class)
