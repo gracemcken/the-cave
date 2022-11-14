@@ -1,5 +1,6 @@
 import random
-
+import time
+import sys
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -18,6 +19,17 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("the_cave")
 
+
+def typePrint(text):
+    """
+    Alters speed of text to mimic text being typed out.
+    """
+    text += "\n"
+    for char in text:
+        time.sleep(0.05)
+        print(char, end="", flush=True)
+
+
 # SCENE 1 POTENTIAL EVENTS
 
 
@@ -25,7 +37,7 @@ def wake_up():
     """
     Introduction for player, section 1 of the story.
     """
-    print(
+    typePrint(
         """
     You wake up in a cold, damp cave...
     You can't remember the last thing that happened to you, but here you are;
@@ -35,7 +47,7 @@ def wake_up():
     In the distance you can see a faint glow of light ahead of you.
     """
     )
-    print(
+    typePrint(
         """
     Do you...?
     1. Stand up and head directly towards the light despite being unable to
@@ -45,17 +57,17 @@ def wake_up():
     """
     )
 
-    print("Please choose a option number\n")
+    typePrint("Please choose a option number\n")
     while True:
         answer1 = input("")
         answers = ["1", "2", "3"]
         if answer1 in answers:
-            print(
+            typePrint(
                 f"You have chosen option {answer1}."
                 " Let us see if the odds are in your favour..."
             )
         else:
-            print("Please type either '1', '2', or '3'.")
+            typePrint("Please type either '1', '2', or '3'.")
             continue
         return answer1
 
@@ -66,14 +78,14 @@ def exit_game():
     The game is over. You will never know what could have been.
     Want to start again? Please type yes or no.
     """
-    print(exit)
+    typePrint(exit)
     user_ans = input("")
     if user_ans == "Yes" or user_ans == "yes":
         start_game()
     elif user_ans == "No" or user_ans == "no":
-        print("GAME OVER. THANK YOU FOR PLAYING.")
+        typePrint("GAME OVER. THANK YOU FOR PLAYING.")
     else:
-        print("Please type either yes/Yes or no/No")
+        typePrint("Please type either yes/Yes or no/No")
 
 
 def decision_one(answer1):
@@ -83,7 +95,7 @@ def decision_one(answer1):
     if answer1 == "1":
         dex = stat.roll_dex()
         if dex >= 25:
-            print(
+            typePrint(
                 """
             Thankfully by carefully walking slowly, you manage to make your way
             towards the light without incident. You can now see your
@@ -113,7 +125,7 @@ def fail_one():
     in the first choice.
     """
     stat.update_hp(5)
-    print(
+    typePrint(
         """
     Bang! You trip over something and land on your hands and knees. It's
     painful and although you can't see it, you can feel blood trickle down the
@@ -121,7 +133,7 @@ def fail_one():
     You lose 5 health points.
     """
     )
-    print(
+    typePrint(
         """
     Do you...?
     1. Stand up and continue towards the light.
@@ -134,13 +146,13 @@ def fail_one():
         answer1 = input("")
         answers = ["1", "2", "3"]
         if answer1 in answers:
-            print(
+            typePrint(
                 f"You have chosen option {answer1}."
                 " Let us see how you fare this time..."
             )
             decision_one(answer1)
         else:
-            print("Please type either '1', '2', or '3'.")
+            typePrint("Please type either '1', '2', or '3'.")
             continue
         return answer1
 
@@ -152,7 +164,7 @@ def fail_two():
     of the first choice.
     """
     stat.update_hp(5)
-    print(
+    typePrint(
         """
     As you feel around, your hands meet the rough edge of the stone wall.
     'Success!' you think. Surely you can use this as a way to safely navigate
@@ -161,7 +173,7 @@ def fail_two():
     You lose 5 health points.
     """
     )
-    print(
+    typePrint(
         """
     Do you...?
     1. Stand up and continue towards the light.
@@ -174,13 +186,13 @@ def fail_two():
         answer1 = input("")
         answers = ["1", "2", "3"]
         if answer1 in answers:
-            print(
+            typePrint(
                 f"You have chosen option {answer1}."
                 " Let us see how you fare this time..."
             )
             decision_one(answer1)
         else:
-            print("Please type either '1', '2', or '3'.")
+            typePrint("Please type either '1', '2', or '3'.")
             continue
         return answer1
 
@@ -195,7 +207,7 @@ def find_item_one():
     Text that runs if the player successfully passes the luck check. Results in
     torch and rusted key being added to inventory.
     """
-    print(
+    typePrint(
         """
     Success! You're not sure if it's just luck or someone is looking out for
     you, but as your hands feel around the floor in front of you, you come into
@@ -225,7 +237,7 @@ def stage_2():
     """
     Scene 2 of the story and next decision.
     """
-    print(
+    typePrint(
         """
     The source of the light is a iron lantern fixed to the wall.
     The cave seems to be starting to form into a carved out hallway with more
@@ -236,7 +248,7 @@ def stage_2():
     worksheet_to_pull = SHEET.worksheet("inventory")
     inventory = worksheet_to_pull.col_values(1)
     if "torch" in inventory:
-        print(
+        typePrint(
             """
         You already have a light source thankfully, but the lanterns provide an
         extra bit of light for you. You continue down the corridor, following
@@ -246,7 +258,7 @@ def stage_2():
 
         stage_3()
     else:
-        print(
+        typePrint(
             """
         While the lanterns seem to continue down the hallway, you have no idea
         whether further along the path is lit.
@@ -262,13 +274,13 @@ def stage_2():
             answer2 = input("")
             answers = ["1", "2", "3"]
             if answer2 in answers:
-                print(
+                typePrint(
                     f"You have chosen option {answer2}."
                     " Let us see if the odds are in your favour..."
                 )
                 decision_two(answer2)
             else:
-                print("Please type either '1', '2', or '3'.")
+                typePrint("Please type either '1', '2', or '3'.")
                 continue
             return answer2
 
@@ -280,7 +292,7 @@ def decision_two(answer2):
     if answer2 == "1":
         strength = stat.roll_strength()
         if strength >= 25:
-            print(
+            typePrint(
                 """
             With all of your strength, you attempt to pull the lantern from
             the wall without smashing the glass and burning your hand.
@@ -298,7 +310,7 @@ def decision_two(answer2):
         else:
             fail_three()
     elif answer2 == "2":
-        print(
+        typePrint(
             """
         Hopefully the lanterns continue lighting your way. You're taking a risk
         but also avoiding potential injury. With that decided, you continue
@@ -321,7 +333,7 @@ def fail_three():
     in scene 2.
     """
     stat.update_hp(10)
-    print(
+    typePrint(
         """
     The lantern is wedged into the wall much deeper than you expected. You put
     all your strength into it and pull but unfortunately one of your hands
@@ -330,7 +342,7 @@ def fail_three():
     You lose 10 health points.
     """
     )
-    print(
+    typePrint(
         """
     Do you...?
     1. Admit defeat due to your injured hand and continue down the hall,
@@ -343,13 +355,13 @@ def fail_three():
         answer2 = input("")
         answers = ["1", "2"]
         if answer2 in answers:
-            print(f"You have chosen option {answer2}.")
+            typePrint(f"You have chosen option {answer2}.")
             if answer2 == "1":
                 stage_3()
             else:
                 exit_game()
         else:
-            print("Please type either '1' or '2'")
+            typePrint("Please type either '1' or '2'")
             continue
         return answer2
 
@@ -365,7 +377,7 @@ def stage_3():
     """
     Scene 3 of the story and next decision.
     """
-    print(
+    typePrint(
         """
     As you reach the end of the hallway, you come across a skeleton propped up
     against the wall. Cobwebs cover his eye sockets, so who knows how long he
@@ -377,7 +389,7 @@ def stage_3():
     state of dress, but you would have to move him to search better.
     """
     )
-    print(
+    typePrint(
         """
     Do you...?
     1. Search him for a weapon.
@@ -391,9 +403,9 @@ def stage_3():
         answer3 = input("")
         answers = ["1", "2", "3"]
         if answer3 in answers:
-            print(f"You have chosen option {answer3}.")
+            typePrint(f"You have chosen option {answer3}.")
         else:
-            print("Please type either '1', '2', or '3'.")
+            typePrint("Please type either '1', '2', or '3'.")
             continue
         if answer3 == "1":
             decision_3_a(variables.player_class)
@@ -410,7 +422,7 @@ def decision_3_a(player_class):
     """
     What happens should the player choose to select the weapon.
     """
-    print(
+    typePrint(
         """
     You shove the skeleton over to check underneath him for a weapon.
     Unfortunately the he is heavier than he looks and the weight of his armour
@@ -421,21 +433,21 @@ def decision_3_a(player_class):
     if player_class == "warrior" or player_class == "Warrior":
         weapons = ["sword", "axe"]
         random_weapon = random.choice(weapons)
-        print(f"You have found a {random_weapon}!")
+        typePrint(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
         preferred(variables.weapon)
     elif player_class == "ranger" or player_class == "Ranger":
         weapons = ["dagger", "bow"]
         random_weapon = random.choice(weapons)
-        print(f"You have found a {random_weapon}!")
+        typePrint(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
         preferred(variables.weapon)
     else:
         weapons = ["staff", "spell tome"]
         random_weapon = random.choice(weapons)
-        print(f"You have found a {random_weapon}!")
+        typePrint(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
         preferred(variables.weapon)
@@ -450,7 +462,7 @@ def decision_3_b():
     defense = worksheet_to_access.acell("J2").value
     final_defense = int(defense) + int(10)
     worksheet_to_access.update_cell(2, 10, int(final_defense))
-    print(
+    typePrint(
         """
     While the armour isn't in the best shape it will protect you more than the
     ragged clothing you're currently wearing. As you remove the armour from
@@ -458,7 +470,7 @@ def decision_3_b():
     chance of finding a weapon is now slim.
     """
     )
-    print(
+    typePrint(
         """
     Would you like to try anyway?
     1. Yes.
@@ -472,16 +484,16 @@ def decision_3_b():
         answer4 = input("")
         answers = ["1", "2", "3"]
         if answer4 in answers:
-            print(f"You have chosen option {answer4}.")
+            typePrint(f"You have chosen option {answer4}.")
         else:
-            print("Please type either '1', '2', or '3'.")
+            typePrint("Please type either '1', '2', or '3'.")
             continue
         if answer4 == "1":
             luck = stat.roll_luck()
             if luck >= 30:
                 wildcard(variables.player_class)
             else:
-                print(
+                typePrint(
                     """
     You move the pile of rubble that was once the skeleton but fail to find
     anything of use.
@@ -503,7 +515,7 @@ def wildcard(player_class):
     if player_class == "warrior" or player_class == "Warrior":
         weapons = ["sword", "axe"]
         random_weapon = random.choice(weapons)
-        print(f"You have found a {random_weapon}!")
+        typePrint(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
         preferred(variables.weapon)
@@ -511,7 +523,7 @@ def wildcard(player_class):
     elif player_class == "ranger" or player_class == "Ranger":
         weapons = ["dagger", "bow"]
         random_weapon = random.choice(weapons)
-        print(f"You have found a {random_weapon}!")
+        typePrint(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
         preferred(variables.weapon)
@@ -519,7 +531,7 @@ def wildcard(player_class):
     else:
         weapons = ["staff", "spell tome"]
         random_weapon = random.choice(weapons)
-        print(f"You have found a {random_weapon}!")
+        typePrint(f"You have found a {random_weapon}!")
         worksheet_to_update = SHEET.worksheet("inventory")
         worksheet_to_update.update_cell(2, 2, random_weapon)
         preferred(variables.weapon)
@@ -540,15 +552,15 @@ def preferred(weapon):
         attack = worksheet_to_access.acell("I2").value
         final_attack = int(attack) + int(15)
         worksheet_to_access.update_cell(2, 9, int(final_attack))
-        print(f"Luckily you are skilled with a {current_weapon}!")
-        print("This bodes well for any future fights.")
+        typePrint(f"Luckily you are skilled with a {current_weapon}!")
+        typePrint("This bodes well for any future fights.")
         stage_4()
     elif current_weapon != weapon:
         worksheet_to_access = SHEET.worksheet("character")
         attack = worksheet_to_access.acell("I2").value
         final_attack = int(attack) + int(5)
         worksheet_to_access.update_cell(2, 9, int(final_attack))
-        print(
+        typePrint(
             """
         It may not be a weapon you're used to but you will still do better in
         a fight than if you were without it.
@@ -556,7 +568,7 @@ def preferred(weapon):
         )
         stage_4()
     else:
-        print("Game error.")
+        typePrint("Game error.")
 
 
 # Main event
@@ -566,7 +578,7 @@ def stage_4():
     """
     Scene 4 of the story and next decision.
     """
-    print(
+    typePrint(
         """
     As you continue through the hallway, the lanterns get fewer and fewer, and
     with them the light gets dimmer and dimmer.
@@ -585,7 +597,7 @@ def attack_him():
     Function triggered if player has a light source. Allows them to attack or
     try sneak past the enemy.
     """
-    print(
+    typePrint(
         """
     Thankfully you have your portable light source still and can see
     fairly clearly through the darkness. As you turn a corner, you take a sharp
@@ -594,7 +606,7 @@ def attack_him():
     hallway. You duck back behind the wall corner to decide on what to do next.
     """
     )
-    print(
+    typePrint(
         """
             Do you...?
             1. Attack him preemptively before he notices you?
@@ -607,14 +619,14 @@ def attack_him():
         answer5 = input("")
         answers = ["1", "2", "3"]
         if answer5 in answers:
-            print(f"You have chosen option {answer5}.")
+            typePrint(f"You have chosen option {answer5}.")
         else:
-            print("Please type either '1', '2', or '3'.")
+            typePrint("Please type either '1', '2', or '3'.")
             continue
         if answer5 == "1":
             attack = stat.roll_attack()
             if attack >= 30:
-                print(
+                typePrint(
                     """
                         You make the decision to attack before you're noticed.
                         Thankfully, the skeleton remains unaware of your
@@ -628,7 +640,7 @@ def attack_him():
         elif answer5 == "2":
             dex = stat.roll_dex()
             if dex >= 25:
-                print(
+                typePrint(
                     """
                         You extinguish your light and quietly sneak around the
                         enemy, careful not to make too much noise. You're not
@@ -640,7 +652,7 @@ def attack_him():
                 )
                 stage_5()
             else:
-                print(
+                typePrint(
                     """
                         He sees you and it's too late. The last thing you
                         see is the glint of his sword coming towards you.
@@ -656,7 +668,7 @@ def noise():
     Triggered if player has no light source and does not see the enemy. Rolls
     dex & luck, if successful player lives, if not, player dies.
     """
-    print(
+    typePrint(
         """
         As you come around a corner, you hear a noise. It's a strange creaking
         sound, like teeth grinding against each other. You freeze as you try
@@ -669,7 +681,7 @@ def noise():
     luck = stat.roll_luck()
     survival = int(dex) + int(luck)
     if survival >= 60:
-        print(
+        typePrint(
             """
             Someone was looking out for you today. Although you can't even see
             what you're dodging, you manage to move out of the way of the
@@ -684,7 +696,7 @@ def noise():
         )
         stage_5()
     else:
-        print(
+        typePrint(
             """
             Your enemy strikes you. The last thing you see as you fall to the
             ground is the skeleton's glowing red eyes.
@@ -697,14 +709,14 @@ def stage_5():
     """
     Scene 5 of the story and next decision.
     """
-    print(
+    typePrint(
         """
         At the end of the corridor is a iron gate. To ensure nothing follows
         you into the next room, you decide it is best to pull the chain and
         close the gate behind you as you move forwards.
         """
     )
-    print(
+    typePrint(
         """
     The next room is almost like a dome. Torches are lit all along the walls
     and aside from what look like some sealed closed urns, there's little else
@@ -722,7 +734,7 @@ def stage_5():
 
 
 def unlock():
-    print(
+    typePrint(
         """
     You remember the key you found when you first woke up. Perhaps...?
     You take out the rusted key a slide it into the box's keyhole and turn. To
@@ -735,7 +747,7 @@ def unlock():
     of moving it, but in the centre are three small icons.
     """
     )
-    print(
+    typePrint(
         """
         Upon further inspection, you see that these icons match those on the
         stone tablet you've just acquired, but are in a different order. You
@@ -744,7 +756,7 @@ def unlock():
         will prompt the door to open?
         """
     )
-    print(
+    typePrint(
         """
     Do you...?
     1. Move the icons to the order shown on the tablet?
@@ -756,9 +768,9 @@ def unlock():
         answer = input("")
         answers = ["1", "2"]
         if answer in answers:
-            print(f"You have chosen option {answer}.")
+            typePrint(f"You have chosen option {answer}.")
         else:
-            print("Please type either '1', '2', or '3'.")
+            typePrint("Please type either '1', '2', or '3'.")
             continue
         if answer == "1":
             freedom()
@@ -771,7 +783,7 @@ def mini_game():
     Triggers if player does not have a key and must therefore guess the correct
     order of the icons. Relies on luck stat rolls.
     """
-    print(
+    typePrint(
         """
     There doesn't seem to be any other way to open the box and you are without
     a key, so you are forced to look for another solution. Something on the
@@ -782,7 +794,7 @@ def mini_game():
     them into a certain order will prompt the door to open?
     """
     )
-    print(
+    typePrint(
         """
     Do you...?
     1. Move the icons and hope the order you've chosen is correct?
@@ -794,9 +806,9 @@ def mini_game():
         answer = input("")
         answers = ["1", "2"]
         if answer in answers:
-            print(f"You have chosen option {answer}.")
+            typePrint(f"You have chosen option {answer}.")
         else:
-            print("Please type either '1', '2', or '3'.")
+            typePrint("Please type either '1', '2', or '3'.")
             continue
         if answer == "1":
             luck = stat.roll_luck()
@@ -809,7 +821,7 @@ def mini_game():
 
 
 def luck_fail():
-    print(
+    typePrint(
         """
     You hold your breath as the icons slide into place and wait for something
     to happen. There is nothing but silence. The door didn't open, but neither
@@ -824,9 +836,9 @@ def luck_fail():
         answer = input("")
         answers = ["1", "2"]
         if answer in answers:
-            print(f"You have chosen option {answer}.")
+            typePrint(f"You have chosen option {answer}.")
         else:
-            print("Please type either '1' or '2'")
+            typePrint("Please type either '1' or '2'")
             continue
         if answer == "1":
             luck = stat.roll_luck
@@ -839,7 +851,7 @@ def luck_fail():
 
 
 def luck_fail2():
-    print(
+    typePrint(
         """
     Your heart pounds as you try another combination. There is a split second
     between the icons sliding into place and a hissing sound. All you feel is
@@ -852,20 +864,21 @@ def luck_fail2():
     Please choose a option number.
     """
     )
+    stat.update_hp(20)
     while True:
         answer = input("")
         answers = ["1", "2"]
         if answer in answers:
-            print(f"You have chosen option {answer}.")
+            typePrint(f"You have chosen option {answer}.")
         else:
-            print("Please type either '1' or '2'")
+            typePrint("Please type either '1' or '2'")
             continue
         if answer == "1":
             luck = stat.roll_luck()
             if luck >= 29:
                 freedom()
             else:
-                print(
+                typePrint(
                     """
                     As the icons slide into place once again, you close your
                     eyes and pray you were right this time. While no more
@@ -881,7 +894,7 @@ def luck_fail2():
 
 
 def freedom():
-    print(
+    typePrint(
         """
     Everything is still for a moment and you fear you've made a mistake until
     suddenly there's a grinding sound and the door begins to lift. Dust flies
@@ -895,7 +908,7 @@ def freedom():
 
 
 def congrats():
-    print(
+    typePrint(
         """
         Congratulations! You've escapes the cave! Thank you for playing. Would
         you like to try again?
@@ -907,22 +920,22 @@ def congrats():
         answer = input("")
         answers = ["1", "2"]
         if answer in answers:
-            print(f"You have chosen option {answer}.")
+            typePrint(f"You have chosen option {answer}.")
         else:
-            print("Please type either '1' or '2'")
+            typePrint("Please type either '1' or '2'")
             continue
         if answer == "1":
             start_game()
         else:
-            print("Thank you again for playing!")
+            typePrint("Thank you again for playing!")
 
 
 def dead():
     """
     Triggered if player is killed by an enemy. Gives option to retry game.
     """
-    print("YOU HAVE DIED. GAME OVER")
-    print(
+    typePrint("YOU HAVE DIED. GAME OVER")
+    typePrint(
         """
         Would you like to play again?
         1. Yes
@@ -932,10 +945,10 @@ def dead():
     answer = input("")
     answers = ["1", "2"]
     if answer in answers:
-        print(f"You have chosen option {answer}.")
+        typePrint(f"You have chosen option {answer}.")
         if answer == "1":
             start_game()
         else:
-            print("Thank you for playing.")
+            typePrint("Thank you for playing.")
     else:
-        print("Please type either '1', '2', or '3'.")
+        typePrint("Please type either '1', '2', or '3'.")
