@@ -464,6 +464,7 @@ def decision_3_b():
     1. Yes.
     2. No, move on.
     3. Close your eyes again and wish for this game to end.
+    Please choose a option number.
     """
     )
 
@@ -599,6 +600,7 @@ def attack_him():
             1. Attack him preemptively before he notices you?
             2. Try to sneak past him?
             3. Close your eyes and wish for the game to end?
+            Please choose a option number.
             """
     )
     while True:
@@ -680,6 +682,7 @@ def noise():
             Somehow, you make it.
             """
         )
+        stage_5()
     else:
         print(
             """
@@ -694,7 +697,73 @@ def stage_5():
     """
     Scene 5 of the story and next decision.
     """
-    print("Scene 5")
+    print(
+        """
+        At the end of the corridor is a iron gate. To ensure nothing follows
+        you into the next room, you decide it is best to pull the chain and
+        close the gate behind you as you move forwards.
+        """
+    )
+    print(
+        """
+    The next room is almost like a dome. Torches are lit all along the walls
+    and aside from what look like some sealed closed urns, there's little else
+    there other than a great big stone door and a pedestal in front of it.
+    You approach the pedestal and resting on top of it, you find an old looking
+    box. There's what looks like a crudely made keyhole on the front of it.
+    """
+    )
+    worksheet_to_pull = SHEET.worksheet("inventory")
+    inventory = worksheet_to_pull.col_values(1)
+    if ("key") in inventory:
+        unlock()
+    else:
+        mini_game()
+
+
+def unlock():
+    print(
+        """
+    You remember the key you found when you first woke up. Perhaps...?
+    You take out the rusted key a slide it into the box's keyhole and turn. To
+    your delight, there is a loud click and the box opens. You're not sure what
+    to expect since the box is so plain looking, but the contents do catch you
+    by surprise.
+    Inside is a small stone tablet with fairly simplistic etchings of a bird,
+    a frog and a wolf. This doesn't exactly make sense to you until you look up
+    at the giant stone door in front of you. It looks set in place with no way
+    of moving it, but in the centre are three small icons.
+    """
+    )
+    print(
+        """
+        Upon further inspection, you see that these icons match those on the
+        stone tablet you've just acquired, but are in a different order. You
+        run your fingers over the icons and are surprised to see that they can
+        be moved. Perhaps moving them into the same order as is on the tablet
+        will prompt the door to open?
+        """
+    )
+    print(
+        """
+    Do you...?
+    1. Move the icons to the order shown on the tablet?
+    2. Close your eyes and wish for the game to end?
+    Please choose a option number.
+    """
+    )
+    while True:
+        answer = input("")
+        answers = ["1", "2"]
+        if answer in answers:
+            print(f"You have chosen option {answer}.")
+        else:
+            print("Please type either '1', '2', or '3'.")
+            continue
+        if answer == "1":
+            freedom()
+        else:
+            exit_game()
 
 
 def dead():
