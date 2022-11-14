@@ -52,6 +52,7 @@
 
 
 # Site Overview
+Deployed Site: [Here](https://the-cave-rpg.herokuapp.com/)
 The Cave is a text adventure RPG game where the player choses their race, class and preferred weapon. These initial decisions impact the player's stats in-game and whether or not they will be able to escape the cave alive! Decisions that impact the game are stored in Google Sheets and are retrieved when relevant to the game.
 
 ## Goal
@@ -109,7 +110,7 @@ Start_game() function after player is asked if they want to play again doesn't s
 Preferred weapon function gets confused due to uppercase or lower case entry by player | Resolved | Changed so player only types in lowercase | ![dagger-bug](readme_docs/bug_screenshots/dagger_bug.png) ![dagger-bug2](readme_docs/bug_screenshots/dagger_bug2.png)
 Error when attempting to run stat.roll_luck in luck_fail() functions | Resolved | Was missing () | ![luck_bug](readme_docs/bug_screenshots/roll_luck_bug.png)
 ## Known Issues
-
+- I am unsure how the game would work if more than one person tried to play at the same time. I believe because one person would overwrite the info of the other it would cause issues.
 
 
 # Deployment 
