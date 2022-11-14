@@ -808,6 +808,36 @@ def mini_game():
             exit_game()
 
 
+def luck_fail():
+    print(
+        """
+    You hold your breath as the icons slide into place and wait for something
+    to happen. There is nothing but silence. The door didn't open, but neither
+    did anything bad happen.
+    Would you like to try again?
+    1. Try again.
+    2. Close your eyes and wish for the game to end?
+    Please choose a option number.
+    """
+    )
+    while True:
+        answer = input("")
+        answers = ["1", "2"]
+        if answer in answers:
+            print(f"You have chosen option {answer}.")
+        else:
+            print("Please type either '1', '2', or '3'.")
+            continue
+        if answer == "1":
+            luck = stat.roll_luck
+            if luck >= 29:
+                freedom()
+            else:
+                luck_fail2()
+        else:
+            exit_game()
+
+
 def dead():
     """
     Triggered if player is killed by an enemy. Gives option to retry game.
