@@ -1,4 +1,5 @@
 import gspread
+import time
 from google.oauth2.service_account import Credentials
 
 
@@ -14,6 +15,16 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("the_cave")
 
 
+def typePrint(text):
+    """
+    Alters speed of text to mimic text being typed out.
+    """
+    text += "\n"
+    for char in text:
+        time.sleep(0.05)
+        print(char, end="", flush=True)
+
+
 # Game set up functions. Each run at the beginning of the game.
 
 
@@ -21,15 +32,15 @@ def get_name():
     """
     Gets name of player.
     """
-    print("Welcome, wanderer.\n")
-    print("What is your name?")
+    typePrint("Welcome, wanderer.\n")
+    typePrint("What is your name?")
     while True:
         name = input("\nMy name is: ")
         if not name.isalpha():
-            print("Please enter letters only.")
+            typePrint("Please enter letters only.")
             continue
         else:
-            print(f"Hello {name}. Welcome to the Cave.")
+            typePrint(f"Hello {name}. Welcome to the Cave.")
             break
     return name
 
@@ -48,20 +59,20 @@ def get_race():
     add different statistics to the player's core scores
     """
 
-    print("Tell me, what race are you?\n")
-    print(
+    typePrint("Tell me, what race are you?\n")
+    typePrint(
         """
     Human: Adaptable and ambitious, humans are the jack of all trades when it
     comes to races.
     """
     )
-    print(
+    typePrint(
         """
     Elf: Known for their beauty and grace, elves excel at acrobatics and
     swiftness.
     """
     )
-    print(
+    typePrint(
         """
     Dwarf: Solid and stout, dwarves are as stubborn as they are strong.
     """
@@ -70,12 +81,12 @@ def get_race():
         race = input("My race is: ")
         races = ["human", "dwarf", "elf"]
         if race in races:
-            print(f"Nice to meet you, {race}. You are the first {race}")
-            print("to be seen here in a long, long time. Please, give me one")
-            print("moment to prepare your tale.")
+            typePrint(f"Nice to meet you, {race}. You are the first {race}")
+            typePrint("to be seen here in a long time. Please, give me one")
+            typePrint("moment to prepare your tale.")
             break
         else:
-            print(
+            typePrint(
                 """
     Please type one of the races listed and ensure to use lowercase.
     """
@@ -98,23 +109,23 @@ def get_class():
     Player chooses their class, each different option add
     different statistics to the player's core scores
     """
-    print(
+    typePrint(
         """
     You seem fairly capable of handling yourself. In which area do your
     expertise lie?
     """
     )
-    print(
+    typePrint(
         """
     Warrior: Strong and formidable, well versed in the art of melee combat.
     """
     )
-    print(
+    typePrint(
         """
     Ranger: A hunter, their work depends of their stealth and instincts
     """
     )
-    print(
+    typePrint(
         """
     Mage: Intelligent and shrewd; as long as they have something to channel it,
     they can control magic.
@@ -125,10 +136,10 @@ def get_class():
     while True:
         player_class = input("My class is: ")
         if player_class in player_classes:
-            print(f"Ah, a {player_class}.")
+            typePrint(f"Ah, a {player_class}.")
             break
         else:
-            print(
+            typePrint(
                 """
                 Please type one of the classes listed and ensure to use
                 lowercase.
@@ -150,7 +161,7 @@ def preferred_weapon(player_class):
     """
     Player chooses their preferred weapon, each class has different options.
     """
-    print(
+    typePrint(
         """
     I'm sure you're strong in a fight, but if you had to choose, which weapon
     would be your preference?
@@ -158,17 +169,17 @@ def preferred_weapon(player_class):
     )
 
     if player_class == "warrior":
-        print("Sword")
-        print("or")
-        print("Axe")
+        typePrint("Sword")
+        typePrint("or")
+        typePrint("Axe")
         while True:
             weapon = input("")
             weapons = ["sword", "axe"]
             if weapon in weapons:
-                print(f"The mighty {weapon}, of course... of course.")
+                typePrint(f"The mighty {weapon}, of course... of course.")
                 break
             else:
-                print(
+                typePrint(
                     """
                     Please type one of the weapons listed and ensure to use
                     lowercase.
@@ -176,17 +187,17 @@ def preferred_weapon(player_class):
                 )
                 continue
     elif player_class == "ranger":
-        print("Dagger")
-        print("or")
-        print("Bow")
+        typePrint("Dagger")
+        typePrint("or")
+        typePrint("Bow")
         while True:
             weapon = input("")
             weapons = ["dagger", "bow"]
             if weapon in weapons:
-                print(f"The elegant {weapon}, of course... of course.")
+                typePrint(f"The elegant {weapon}, of course... of course.")
                 break
             else:
-                print(
+                typePrint(
                     """
                     Please type one of the weapons listed and ensure to use
                     lowercase.
@@ -194,17 +205,17 @@ def preferred_weapon(player_class):
                 )
                 continue
     else:
-        print("Staff")
-        print("or")
-        print("Spell Tome")
+        typePrint("Staff")
+        typePrint("or")
+        typePrint("Spell Tome")
         while True:
             weapon = input("")
             weapons = ["staff", "spell tome"]
             if weapon in weapons:
-                print(f"The mystical {weapon}, of course... of course.")
+                typePrint(f"The mystical {weapon}, of course... of course.")
                 break
             else:
-                print(
+                typePrint(
                     """
                     Please type one of the weapons listed and ensure to use
                     lowercase.
