@@ -880,6 +880,43 @@ def luck_fail2():
             exit_game()
 
 
+def freedom():
+    print(
+        """
+    Everything is still for a moment and you fear you've made a mistake until
+    suddenly there's a grinding sound and the door begins to lift. Dust flies
+    everywhere and the bright light of sunlight begins to spill into the room.
+    You shield your eyes from the dust and light as the door continues to open,
+    until finally, you feel fresh air on your face.
+    You are free.
+    """
+    )
+    congrats()
+
+
+def congrats():
+    print(
+        """
+        Congratulations! You've escapes the cave! Thank you for playing. Would
+        you like to try again?
+        1. Yes
+        2. No
+        """
+    )
+    while True:
+        answer = input("")
+        answers = ["1", "2"]
+        if answer in answers:
+            print(f"You have chosen option {answer}.")
+        else:
+            print("Please type either '1' or '2'")
+            continue
+        if answer == "1":
+            start_game()
+        else:
+            print("Thank you again for playing!")
+
+
 def dead():
     """
     Triggered if player is killed by an enemy. Gives option to retry game.
