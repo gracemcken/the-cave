@@ -766,6 +766,48 @@ def unlock():
             exit_game()
 
 
+def mini_game():
+    """
+    Triggers if player does not have a key and must therefore guess the correct
+    order of the icons. Relies on luck stat rolls.
+    """
+    print(
+        """
+    There doesn't seem to be any other way to open the box and you are without
+    a key, so you are forced to look for another solution. Something on the
+    large door in front of you catches your eye as you glance around. It looks
+    set in place with no way of moving it, but in the centre are three small
+    icons in the shape of a frog, a bird and a wolf. You run your fingers over
+    the icons and are surprised to see that they can be moved. Perhaps moving
+    them into a certain order will prompt the door to open?
+    """
+    )
+    print(
+        """
+    Do you...?
+    1. Move the icons and hope the order you've chosen is correct?
+    2. Close your eyes and wish for the game to end?
+    Please choose a option number.
+    """
+    )
+    while True:
+        answer = input("")
+        answers = ["1", "2"]
+        if answer in answers:
+            print(f"You have chosen option {answer}.")
+        else:
+            print("Please type either '1', '2', or '3'.")
+            continue
+        if answer == "1":
+            luck = stat.roll_luck
+            if luck >= 29:
+                freedom()
+            else:
+                luck_fail()
+        else:
+            exit_game()
+
+
 def dead():
     """
     Triggered if player is killed by an enemy. Gives option to retry game.
