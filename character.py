@@ -68,7 +68,7 @@ def get_race():
     )
     while True:
         race = input("My race is: ")
-        races = ["Human", "human", "Dwarf", "dwarf", "Elf", "elf"]
+        races = ["human", "dwarf", "elf"]
         if race in races:
             print(f"Nice to meet you, {race}. You are the first {race}")
             print("to be seen here in a long, long time. Please, give me one")
@@ -77,7 +77,7 @@ def get_race():
         else:
             print(
                 """
-    Please type one of the races listed and ensure there is a capital letter.
+    Please type one of the races listed and ensure to use lowercase.
     """
             )
 
@@ -121,14 +121,19 @@ def get_class():
     """
     )
 
-    player_classes = ["warrior", "ranger", "mage", "Warrior", "Ranger", "Mage"]
+    player_classes = ["warrior", "ranger", "mage"]
     while True:
         player_class = input("My class is: ")
         if player_class in player_classes:
             print(f"Ah, a {player_class}.")
             break
         else:
-            print("Please type one of the classes listed.")
+            print(
+                """
+                Please type one of the classes listed and ensure to use
+                lowercase.
+                """
+            )
             continue
     return player_class
 
@@ -152,31 +157,41 @@ def preferred_weapon(player_class):
     """
     )
 
-    if player_class == "warrior" or player_class == "Warrior":
+    if player_class == "warrior":
         print("Sword")
         print("or")
         print("Axe")
         while True:
             weapon = input("")
-            weapons = ["sword", "Sword", "axe", "Axe"]
+            weapons = ["sword", "axe"]
             if weapon in weapons:
                 print(f"The mighty {weapon}, of course... of course.")
                 break
             else:
-                print("Please type one of the weapons listed.")
+                print(
+                    """
+                    Please type one of the weapons listed and ensure to use
+                    lowercase.
+                    """
+                )
                 continue
-    elif player_class == "ranger" or player_class == "Ranger":
+    elif player_class == "ranger":
         print("Dagger")
         print("or")
         print("Bow")
         while True:
             weapon = input("")
-            weapons = ["dagger", "Dagger", "bow", "Bow"]
+            weapons = ["dagger", "bow"]
             if weapon in weapons:
                 print(f"The elegant {weapon}, of course... of course.")
                 break
             else:
-                print("Please type one of the weapons listed.")
+                print(
+                    """
+                    Please type one of the weapons listed and ensure to use
+                    lowercase.
+                    """
+                )
                 continue
     else:
         print("Staff")
@@ -184,12 +199,17 @@ def preferred_weapon(player_class):
         print("Spell Tome")
         while True:
             weapon = input("")
-            weapons = ["staff", "Staff", "spell tome", "Spell Tome"]
+            weapons = ["staff", "spell tome"]
             if weapon in weapons:
                 print(f"The mystical {weapon}, of course... of course.")
                 break
             else:
-                print("Please type one of the weapons listed.")
+                print(
+                    """
+                    Please type one of the weapons listed and ensure to use
+                    lowercase.
+                    """
+                )
                 continue
     return weapon
 
@@ -209,11 +229,11 @@ def add_race_modifiers(race):
     Dwarf gets + 10 to strength.
     Elf gets + 10 to dexterity
     """
-    if race == "Human" or race == "human":
+    if race == "human":
         worksheet_to_update = SHEET.worksheet("character")
         worksheet_to_update.update_cell(2, 7, int(15))
         worksheet_to_update.update_cell(2, 8, int(15))
-    elif race == "Dwarf" or race == "dwarf":
+    elif race == "dwarf":
         worksheet_to_update = SHEET.worksheet("character")
         worksheet_to_update.update_cell(2, 8, int(20))
     else:
@@ -228,13 +248,13 @@ def add_class_modifiers(player_class):
     Ranger gets + 10 to dexterity.
     Mage gets +10 to luck.
     """
-    if player_class == "warrior" or player_class == "Warrior":
+    if player_class == "warrior":
         worksheet_to_update = SHEET.worksheet("character")
         # Call current value of strength and add 10 to it.
         cell_to_update = worksheet_to_update.acell("H2").value
         class_buff = int(cell_to_update) + int(10)
         worksheet_to_update.update_cell(2, 8, int(class_buff))
-    elif player_class == "ranger" or player_class == "Ranger":
+    elif player_class == "ranger":
         worksheet_to_update = SHEET.worksheet("character")
         # Call current value of dexterity and add 10 to it.
         cell_to_update = worksheet_to_update.acell("G2").value
