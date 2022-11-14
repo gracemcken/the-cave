@@ -799,7 +799,7 @@ def mini_game():
             print("Please type either '1', '2', or '3'.")
             continue
         if answer == "1":
-            luck = stat.roll_luck
+            luck = stat.roll_luck()
             if luck >= 29:
                 freedom()
             else:
