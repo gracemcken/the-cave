@@ -826,7 +826,7 @@ def luck_fail():
         if answer in answers:
             print(f"You have chosen option {answer}.")
         else:
-            print("Please type either '1', '2', or '3'.")
+            print("Please type either '1' or '2'")
             continue
         if answer == "1":
             luck = stat.roll_luck
@@ -834,6 +834,48 @@ def luck_fail():
                 freedom()
             else:
                 luck_fail2()
+        else:
+            exit_game()
+
+
+def luck_fail2():
+    print(
+        """
+    Your heart pounds as you try another combination. There is a split second
+    between the icons sliding into place and a hissing sound. All you feel is
+    burning pain as arrows shoot from hidden slots in the walls. One hits you
+    and it is obviously dipped in poison if the pain is anything to go by.
+    You lose 20HP.
+    Do you...?
+    1. Try again?
+    2. Close your eyes and wish for the game to end?
+    Please choose a option number.
+    """
+    )
+    while True:
+        answer = input("")
+        answers = ["1", "2"]
+        if answer in answers:
+            print(f"You have chosen option {answer}.")
+        else:
+            print("Please type either '1' or '2'")
+            continue
+        if answer == "1":
+            luck = stat.roll_luck
+            if luck >= 29:
+                freedom()
+            else:
+                print(
+                    """
+                    As the icons slide into place once again, you close your
+                    eyes and pray you were right this time. While no more
+                    arrows shoot out, you hear the gate you closed behind you
+                    earlier open and the creaking of a skeleton approach. You
+                    are gravely injured from the poisoned arrow. You can't
+                    fight back this time.
+                    """
+                )
+                dead()
         else:
             exit_game()
 
