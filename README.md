@@ -109,6 +109,8 @@ Couldn't reach worksheet | Resolved | I accidentally mixed up functions and adde
 Start_game() function after player is asked if they want to play again doesn't start at the very beginning, instead at the start of wake_up() | Resolved | Enclosed code in variables.py in function and called function in run.py | 
 Preferred weapon function gets confused due to uppercase or lower case entry by player | Resolved | Changed so player only types in lowercase | ![dagger-bug](readme_docs/bug_screenshots/dagger_bug.png) ![dagger-bug2](readme_docs/bug_screenshots/dagger_bug2.png)
 Error when attempting to run stat.roll_luck in luck_fail() functions | Resolved | Was missing () | ![luck_bug](readme_docs/bug_screenshots/roll_luck_bug.png)
+After killing the skeleton in stage 4, game did not continue | Resolved | Forgot to add stage_5() after print statement | ![stage_5_bug](readme_docs/bug_screenshots/stage_5_bug.png)
+Game did not recognise player had light source if it was a lantern | Resolved | Changed if elif statement instead of multistatement | 
 ## Known Issues
 - I am unsure how the game would work if more than one person tried to play at the same time. I believe because one person would overwrite the info of the other it would cause issues.
 
