@@ -19,6 +19,41 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("the_cave")
 
 
+def intro():
+    """
+    Shows artwork and introduces the game.
+    """
+    print(
+        r"""
+_________          _______    _______  _______           _______
+\__   __/|\     /|(  ____ \  (  ____ \(  ___  )|\     /|(  ____ \
+   ) (   | )   ( || (    \/  | (    \/| (   ) || )   ( || (    \/
+   | |   | (___) || (__      | |      | (___) || |   | || (__
+   | |   |  ___  ||  __)     | |      |  ___  |( (   ) )|  __)
+   | |   | (   ) || (        | |      | (   ) | \ \_/ / | (
+   | |   | )   ( || (____/\  | (____/\| )   ( |  \   /  | (____/\
+   )_(   |/     \|(_______/  (_______/|/     \|   \_/   (_______/
+"""
+    )
+    print(
+        """
+        Welcome to The Cave, a text based adventure game where your choices at
+        the beginning of the game impact the outcome of the end. Along with
+        your stats that are generated based on your choices, there is also
+        a random dice roll added, just like in Dungeons and Dragons!
+        Please press enter to begin!
+        """
+    )
+    while True:
+        input1 = input("Press ENTER: ")
+        if input1 == "":
+            print("The game will now begin!")
+            start_game()
+        else:
+            print(f"You typed '{input1}'. The game will not start yet.")
+            continue
+
+
 # Beginning of game-play below.
 
 
@@ -29,6 +64,7 @@ def start_game():
     """
     stat.default_player_stats()
     stat.default_player_inventory()
+    os.system("clear")
     variables.initialize_variables()
     character.add_name(variables.name)
     character.add_race(variables.race)
@@ -43,4 +79,4 @@ def start_game():
 
 
 if __name__ == "__main__":
-    start_game()
+    intro()
