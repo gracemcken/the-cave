@@ -648,6 +648,12 @@ def attack_him():
                 )
                 stage_5()
             else:
+                typePrint(
+                    """
+                        He sees you and it's too late. The last thing you
+                        see is the glint of his sword coming towards you.
+                        """
+                )
                 dead()
         elif answer5 == "2":
             dex = stat.roll_dex()
