@@ -68,6 +68,7 @@ I wanted to create a text based adventure game based on the "Choose your own adv
 - [Heroku](https://heroku.com) to deploy the website.
 - [Visual Studio Code](https://code.visualstudio.com/) as a local IDE & repository.
 - [diagram.net](https://diagram.net) for making the flowchart for the game.
+- [patorjk.com](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20) for converting text to ascii art.
 
 # UX
 ## Target Audience
@@ -128,8 +129,7 @@ Game did not recognise player had light source if it was a lantern | Resolved | 
 # Credits
 ## Code
 - https://stackoverflow.com/questions/60608275/how-can-i-print-text-so-it-looks-like-its-being-typed-out for help with text speed. Also Eventyret_mentor for his help on this issue!
-
-
+- https://codeigo.com/python/check-if-user-pressed-enter For the code for intro()!
 <hr>
 
 ### Version Control
@@ -139,5 +139,5 @@ Game did not recognise player had light source if it was a lantern | Resolved | 
 
 # Acknowledgments
 
-As always, many many thanks you my partner for his patience while I worked on this project and of course my mentor Spencer and my friend Brynjar, who as always was an excellent rubber duck whenever I had an issue I couldn't work past.
+As always, many many thanks to my partner for his patience while I worked on this project and of course my mentor Spencer and my friend Brynjar, who as always was an excellent rubber duck whenever I had an issue I couldn't work past.
 
