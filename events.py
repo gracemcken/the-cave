@@ -578,6 +578,10 @@ def preferred(weapon):
         typePrint("Game error.")
 
 
+# END OF SCENE 3 EVENTS
+
+# SCENE 4 POTENTIAL EVENTS
+
 # Main event
 
 
@@ -722,6 +726,13 @@ def noise():
             """
         )
         dead()
+
+
+# END OF SCENE 4 EVENTS
+
+# SCENE 5 POTENTIAL EVENTS
+
+# Main event
 
 
 def stage_5():
@@ -924,6 +935,11 @@ def freedom():
     """
     )
     congrats()
+
+
+# END OF SCENE 5 EVENTS
+
+# Misc functions
 
 
 def congrats():
