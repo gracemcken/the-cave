@@ -1,6 +1,6 @@
 import random
 import time
-import sys
+import os
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -26,7 +26,7 @@ def typePrint(text):
     """
     text += "\n"
     for char in text:
-        time.sleep(0.05)
+        time.sleep(0.010)
         print(char, end="", flush=True)
 
 
@@ -207,6 +207,7 @@ def find_item_one():
     Text that runs if the player successfully passes the luck check. Results in
     torch and rusted key being added to inventory.
     """
+    os.system("clear")
     typePrint(
         """
     Success! You're not sure if it's just luck or someone is looking out for
@@ -237,6 +238,7 @@ def stage_2():
     """
     Scene 2 of the story and next decision.
     """
+    os.system("clear")
     typePrint(
         """
     The source of the light is a iron lantern fixed to the wall.
@@ -292,6 +294,7 @@ def decision_two(answer2):
     if answer2 == "1":
         strength = stat.roll_strength()
         if strength >= 25:
+            os.system("clear")
             typePrint(
                 """
             With all of your strength, you attempt to pull the lantern from
@@ -333,6 +336,7 @@ def fail_three():
     in scene 2.
     """
     stat.update_hp(10)
+    os.system("clear")
     typePrint(
         """
     The lantern is wedged into the wall much deeper than you expected. You put
@@ -377,6 +381,7 @@ def stage_3():
     """
     Scene 3 of the story and next decision.
     """
+    os.system("clear")
     typePrint(
         """
     As you reach the end of the hallway, you come across a skeleton propped up
@@ -422,10 +427,11 @@ def decision_3_a(player_class):
     """
     What happens should the player choose to select the weapon.
     """
+    os.system("clear")
     typePrint(
         """
     You shove the skeleton over to check underneath him for a weapon.
-    Unfortunately the he is heavier than he looks and the weight of his armour
+    Unfortunately he is heavier than he looks and the weight of his armour
     and bones causes the straps of his armour to snap. While that now may be
     unusable, you've thankfully found a weapon.
     """
@@ -462,6 +468,7 @@ def decision_3_b():
     defense = worksheet_to_access.acell("J2").value
     final_defense = int(defense) + int(10)
     worksheet_to_access.update_cell(2, 10, int(final_defense))
+    os.system("clear")
     typePrint(
         """
     While the armour isn't in the best shape it will protect you more than the
@@ -578,6 +585,7 @@ def stage_4():
     """
     Scene 4 of the story and next decision.
     """
+
     typePrint(
         """
     As you continue through the hallway, the lanterns get fewer and fewer, and
@@ -586,7 +594,9 @@ def stage_4():
     )
     worksheet_to_pull = SHEET.worksheet("inventory")
     inventory = worksheet_to_pull.col_values(1)
-    if ("torch" or "lantern") in inventory:
+    if "torch" in inventory:
+        attack_him()
+    elif "lantern" in inventory:
         attack_him()
     else:
         noise()
@@ -597,6 +607,7 @@ def attack_him():
     Function triggered if player has a light source. Allows them to attack or
     try sneak past the enemy.
     """
+
     typePrint(
         """
     Thankfully you have your portable light source still and can see
@@ -668,6 +679,7 @@ def noise():
     Triggered if player has no light source and does not see the enemy. Rolls
     dex & luck, if successful player lives, if not, player dies.
     """
+
     typePrint(
         """
         As you come around a corner, you hear a noise. It's a strange creaking
@@ -841,7 +853,7 @@ def luck_fail():
             typePrint("Please type either '1' or '2'")
             continue
         if answer == "1":
-            luck = stat.roll_luck
+            luck = stat.roll_luck()
             if luck >= 29:
                 freedom()
             else:
