@@ -646,6 +646,7 @@ def attack_him():
                         is silent. It's safe to assume he's finished.
                         You're safe."""
                 )
+                stage_5()
             else:
                 dead()
         elif answer5 == "2":
