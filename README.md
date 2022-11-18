@@ -69,7 +69,7 @@ I wanted to create a text based adventure game based on the "Choose your own adv
 - [Visual Studio Code](https://code.visualstudio.com/) as a local IDE & repository.
 - [diagram.net](https://diagram.net) for making the flowchart for the game.
 - [patorjk.com](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20) for converting text to ascii art.
-
+- [canva](https://www.canva.com/) for my README banner.
 # UX
 ## Target Audience
 
@@ -141,7 +141,7 @@ After killing the skeleton in stage 4, game did not continue | Resolved | Forgot
 Game did not recognise player had light source if it was a lantern | Resolved | Changed to elif statement instead of multistatement | 
 ## Known Issues
 - I am unsure how the game would work if more than one person tried to play at the same time. I believe because one person would overwrite the info of the other it would cause issues.
-- I am aware in rare cases, sometimes a player can "cheat" when they die by inputting "3" at a certain stage to go back to an earlier stage in the game. I have reviewed the code and cannot see how this is happening, although it has only happened once during peer review when a fellow student intentionally tried to break the game to find bugs. Thanks Jeffery! Haha!
+- I am aware in rare cases, sometimes a player can "cheat" when they die by inputting "3" at a certain stage to go back to an earlier stage in the game. I have reviewed the code and cannot see how this is happening, although it has only happened once during peer review when a fellow student intentionally tried to break the game to find bugs. Thanks [Jeffrey](https://github.com/JeffreyBull76)! Haha!
 
 
 # Deployment 
@@ -174,5 +174,5 @@ Game did not recognise player had light source if it was a lantern | Resolved | 
 
 # Acknowledgments
 
-As always, many many thanks to my partner for his patience while I worked on this project and of course my mentor Spencer and my friend Brynjar, who as always was an excellent rubber duck whenever I had an issue I couldn't work past.
+As always, many many thanks to my partner for his patience while I worked on this project and of course my mentor [Spencer](https://github.com/5pence) and my friend [Brynjar](https://github.com/glassius), who as always was an excellent rubber duck whenever I had an issue I couldn't work past.
 
