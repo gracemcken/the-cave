@@ -20,6 +20,7 @@ platformdirs==2.5.2
 protobuf==4.21.7
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
+pycodestyle==2.9.1
 pygsheets @ https://github.com/nithinmurali/pygsheets/archive/master.zip
 pylint==2.15.4
 pyparsing==3.0.9
