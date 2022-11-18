@@ -46,6 +46,7 @@ I wanted to create a text based adventure game based on the "Choose your own adv
 - [GitHub](https://github.com/) as a remote repository.
 - [Heroku](https://heroku.com) to deploy the website.
 - [Visual Studio Code](https://code.visualstudio.com/) as a local IDE & repository.
+- [Google Sheets API](https://developers.google.com/sheets/api) to store player information.
 - [diagram.net](https://diagram.net) for making the flowchart for the game.
 - [patorjk.com](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20) for converting text to ascii art.
 - [canva](https://www.canva.com/) for my README banner.
