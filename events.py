@@ -986,4 +986,4 @@ def dead():
         else:
             typePrint("Thank you for playing.")
     else:
-        typePrint("Please type either '1', '2', or '3'.")
+        typePrint("Please type either '1' or '2'")
