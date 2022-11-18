@@ -1,3 +1,4 @@
+![amiresponsive](readme_docs/amiresponsive.png)
 # Table of Contents
 - [Table of Contents](#table-of-contents)
   - [Manual Testing](#manual-testing)
