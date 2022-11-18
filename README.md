@@ -27,28 +27,7 @@
   - [Code](#code)
     - [Version Control](#version-control)
 - [Acknowledgments](#acknowledgments)
-   
-  - [Future Features](#future-features)
-- [Table of Contents](#table-of-contents)
-- [Site Overview](#site-overview)
-  - [Goal](#goal)
-  - [Technologies used](#technologies-used)
-- [UX](#ux)
-  - [Target Audience](#target-audience)
-- [Features](#features)
-  - [Existing Features](#existing-features)
-  - [Future Features](#future-features)
-- [Design](#design)
-- [Testing](#testing)
-  - [Bugs](#bugs)
-  - [Known Issues](#known-issues)
-- [Deployment](#deployment)
-  - [Deployment to Heroku](#deployment-to-heroku)
-  - [How to Fork](#how-to-fork)
-- [Credits](#credits)
-  - [Code](#code)
-    - [Version Control](#version-control)
-- [Acknowledgments](#acknowledgments)
+  
 
 
 # Site Overview
