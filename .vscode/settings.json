@@ -24,6 +24,7 @@
    "workbench.colorTheme": "Visual Studio Dark",
    "editor.defaultFormatter": "HookyQR.beautify",
    "cSpell.words": [
+      "buildpacks",
       "gspread"
    ]
 }

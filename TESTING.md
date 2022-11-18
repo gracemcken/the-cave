@@ -3,6 +3,7 @@
   - [Manual Testing](#manual-testing)
     - [Features](#features)
     - [Errors](#errors)
+  - [Validator](#validator)
 
 
 ## Manual Testing
@@ -43,3 +44,7 @@ Type something other than yes/Yes or no/No during exit game | Receive message "P
 Type something other than 1, 2 or 3 during decision stages | Receive message "Please type either '1', '2', or '3'." | As expected | Pass
 Type something other than 1 or 2 during option to play again after winning | Receive message "Please type either '1', or '2'." | As expected | Pass
 Type something other than 1 or 2 during option to play again losing| Receive message "Please type either '1', or '2'." | As expected | Pass
+
+## Validator
+
+Due to PEP8 being down, this project was validated by installing pycodestyle and enabling it as the Python linter. At the time of writing, there are no errors appearing and so it passes.
