@@ -13,7 +13,6 @@
   - [Technologies used](#technologies-used)
 - [UX](#ux)
   - [Target Audience](#target-audience)
-  - [User Stories](#user-stories)
 - [Features](#features)
   - [Existing Features](#existing-features)
   - [Future Features](#future-features)
@@ -35,7 +34,6 @@
   - [Technologies used](#technologies-used)
 - [UX](#ux)
   - [Target Audience](#target-audience)
-  - [User Stories](#user-stories)
 - [Features](#features)
   - [Existing Features](#existing-features)
   - [Future Features](#future-features)
@@ -77,18 +75,44 @@ I wanted to create a text based adventure game based on the "Choose your own adv
 - People who are fans of Dungeons and Dragons
 - Those who enjoy basic text adventure games
 - Those who enjoy interactive novels
-## User Stories
 
-- As a user:
 
 # Features
 
 ## Existing Features
-
-
+- Intro Screen:
+The intro screen that shows when the player first loads the game was made using a text to ascii art generator. This section of the program gives the user a clear idea of how the game works and what to expect. The user must press 'Enter' to trigger the start of the game, otherwise the intro screen will stay as it is.
+![intro-screen](readme_docs/features/intro_screen.png)
+- Player Name:
+The player can here enter their name. It will then be stored in the database in the linked Google Sheet until the next player begins the game. Note: text speed in these examples is faster as snippets were taken while testing. Speed was increased to help with testing.
+![enter-name](readme_docs/features/enter_name.gif)
+- Player Class:
+  Like the player name, the player is then given the choice of three classes to choose from. This is the first choice which will impact the player's statistics. The player class is then uploaded to the Google Sheet also and their statistics are updated.
+![player-class](readme_docs/features/class.gif)
+- Preferred Weapon:
+  The player is then asked to choose which weapon they prefer to use. The weapons offered to the player depend on which class they have chosen before. In this example, because the player chose to be a mage, they were offered a staff or spell tome. Should they have picked warrior or ranger, they would have had the choice of a sword or axe, or a bow or dagger. This choice is important later in the game when the player has the chance to obtain a weapon. If the weapon they find matches their preferred weapon, they get a better attack stat boost.
+![weapon](readme_docs/features/weapon.gif)
+- Player Race:
+  The last major decision the player must make before really beginning the game is which race they will be. Again, depending on their choice, their stats will be altered. Dwarves have better strength, elves have better dexterity etc. 
+![race](readme_docs/features/race.gif)
+- Google Sheet:
+After playing the game as above, our google sheet will now look like below. The player does not see this but the sheet is where their statistics are stored, their inventory etc. Some events only appear to the player if they have a certain object in their inventory for example, such as a light source or the key. 
+![google-sheet](readme_docs/features/google_sheet.png)
+- Exit Game:
+  For every decision, the player is given an opportunity to end the game and exit, usually as option 3.
+  ![exit](readme_docs/features/exit.png)
+  After the player has selected this option, they are then given the option to restart the game and play again. If they type yes, they will be brought back to the section of the game where they input their name and the Google Sheet will be reset.
+  ![play-again](readme_docs/features/play_again.png)
 
 ## Future Features
-
+- Colour :
+  I would like to incorporate some colour into the game if I had the time. I feel like this might help give it some life.
+- Store Player Outcomes:
+  Potentially storing each player's name and whether or not they escaped. I'd love to include this as a scoreboard on the intro screen. 
+- Add more events, weapons, classes and races.
+- Add more in-depth enemy encounters. I had initially planned on the fight with the skeleton to have more outcomes, such as him hitting you and doing a certain amount of damage to reduce your HP. Due to time constraints I had to reduce work done on that and make it a bit more basic. In the future I would prefer to have the player's HP make more of a difference to the story.
+- Show player HP/Defence/Attack etc in some sort of banner.
+- In truth, there are a lot of things I would love to do with this game in the future, but I think to implement them I would have to remove the need for the google spreadsheet and store the player information internally. This would mean quite a lot of re-writing code, which unfortunately I do not have time for at the moment.
 
 # Design
 Below is the flowchart I made to follow along while coding. I initially wrote this out on paper and then used [diagrams.net](https://www.diagrams.net/) to create it digitally.
