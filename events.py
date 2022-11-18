@@ -26,7 +26,7 @@ def typePrint(text):
     """
     text += "\n"
     for char in text:
-        time.sleep(0.010)
+        time.sleep(0.05)
         print(char, end="", flush=True)
 
 
